@@ -19,10 +19,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/login', [App\Http\Controllers\Api\UserController::class,'login_token']);
+Route::post('/register', [App\Http\Controllers\Api\UserController::class,'store']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/user_profile', [App\Http\Controllers\Api\UserController::class,'user_profile']);
+    Route::get('/profile', [App\Http\Controllers\Api\UserController::class,'profile']);
 });
 
 

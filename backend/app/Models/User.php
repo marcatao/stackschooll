@@ -24,9 +24,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'cpf_cnpj',
+        'user_name',
         'name',
         'email',
+        'profile',
         'password',
+        'address'
     ];
 
     /**

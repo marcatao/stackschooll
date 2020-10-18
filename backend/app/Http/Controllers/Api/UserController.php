@@ -11,64 +11,15 @@ use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $users = User\all();
-        return response()->json($users);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+  
+    public function store(Request $request){
+        $new_user = new \App\Actions\Fortify\CreateNewUser;
+        $stored = $new_user->create($request->only(['cpf_cnpj','user_name','name','email','profile','password','address']));
+        if($stored) return response()->json($stored);
+        return response()->json('Ainda precisamos tratar esses erros');
     }
 
     public function login_token(Request $request){
- 
         $request->validate(['email' => 'required|email','password' => 'required','device_name' => 'required',]);
         $user = User::where('email', $request->email)->first();
         if (! $user || ! Hash::check($request->password, $user->password)) {
@@ -77,7 +28,8 @@ class UserController extends Controller
         return $user->createToken($request->device_name)->plainTextToken;
     }
 
-    public function user_profile(Request $request){
+    
+    public function profile(Request $request){
         return auth()->user();
     }
 }
