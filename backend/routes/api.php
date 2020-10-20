@@ -24,6 +24,8 @@ Route::post('/register', [App\Http\Controllers\Api\UserController::class,'store'
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profile', [App\Http\Controllers\Api\UserController::class,'profile']);
+
+    Route::post('/school', [App\Http\Controllers\Api\SchoolController::class,'store']);
 });
 
 
