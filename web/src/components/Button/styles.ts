@@ -19,7 +19,7 @@ export const ButtonStyle = styled.button`
   }
 
   > span {
-    font: 600 1.67rem Archivo;
+    font: 600 1.666666667rem Archivo;
     line-height: 2.7rem;
 
     color: ${props => props.theme.colors.buttonText};

@@ -25,7 +25,7 @@ const Login = (): JSX.Element => {
   const router = useRouter();
 
   const handleSubmitLogin = () => {
-    router.push("/home");
+    router.push("/dashboard");
   };
 
   return (
@@ -67,7 +67,7 @@ const Login = (): JSX.Element => {
             <div>
               <CheckBoxField description="Lembra-me" />
               <Label>
-                <Link href="/register">Esqueci minha senha</Link>
+                <Link href="/recovery">Esqueci minha senha</Link>
               </Label>
             </div>
 
