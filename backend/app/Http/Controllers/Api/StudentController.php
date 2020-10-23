@@ -11,6 +11,11 @@ use  \App\Models\Students;
 
 class StudentController extends Controller
 {
+    public function index(){
+        $school = Schools::where('user_id',auth()->user()->id)->first();
+        $students = Students::where('schools_id',$school->id)->get();
+        return response()->json($students);
+    }
     public function store(Request $request){
         $st = new Students;
         $st->name = $request->name;
