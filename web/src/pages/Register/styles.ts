@@ -24,14 +24,17 @@ export const Banner = styled.section`
   display: flex;
   justify-content: center;
 
-  width: 100vw;
-  height: 50vh;
-  min-height: 400px;
+  width: 100%;
+  //height: 20vh;
+  height: 20%;
+  min-height: 200px;
 
   @media (min-width: 1100px) {
     grid-area: banner;
 
     justify-content: flex-end;
+
+    height: 50vh;
 
     padding-left: 10%;
     padding-right: 10%;
@@ -47,6 +50,7 @@ export const BannerSection = styled(GlobalContainer)`
   align-items: center;
 
   max-width: 500px;
+  min-width: 400px;
 
   position: relative;
 
@@ -64,8 +68,9 @@ export const BannerSection = styled(GlobalContainer)`
 export const Section = styled.section`
   display: flex;
   justify-content: center;
+  align-items: center;
 
-  height: 50vh;
+  height: 80%;
 
   padding-top: 3rem;
 
@@ -73,9 +78,6 @@ export const Section = styled.section`
 
   @media (min-width: 1100px) {
     grid-area: section;
-
-    justify-content: flex-start;
-    align-items: center;
 
     padding-left: 10%;
     padding-right: 10%;
@@ -88,9 +90,10 @@ export const Section = styled.section`
 export const ContentSection = styled(GlobalContainer)`
   display: flex;
   flex-direction: column;
-  align-items: center;
 
   max-width: 500px;
+
+  height: 100%;
 
   > div {
     display: flex;
@@ -119,7 +122,18 @@ export const ContentSection = styled(GlobalContainer)`
 
   @media (min-width: 1100px) {
     max-width: 400px;
+    max-height: 600px;
   }
+`;
+
+export const Header = styled.div`
+  display: flex;
+
+  width: 100%;
+  max-width: 500px;
+  min-width: 400px;
+
+  margin-bottom: 2rem;
 `;
 
 export const LogoContainer = styled.div`
