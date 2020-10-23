@@ -79,6 +79,9 @@ export const Section = styled.section`
   @media (min-width: 1100px) {
     grid-area: section;
 
+    justify-content: flex-start;
+    align-items: center;
+
     padding-left: 10%;
     padding-right: 10%;
 

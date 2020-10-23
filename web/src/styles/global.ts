@@ -34,6 +34,12 @@ export default createGlobalStyle`
       text-decoration: none;
 
       cursor: pointer;
+
+      &:active , &:hover {
+        color: ${props => props.theme.colors.primaryLight};
+
+        transition: color 0.3s;
+      }
     }
 
     @media (min-width: 700px) {
