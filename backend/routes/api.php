@@ -23,6 +23,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/student', [App\Http\Controllers\Api\StudentController::class,'index']);
     Route::post('/student', [App\Http\Controllers\Api\StudentController::class,'store']);
+
+    Route::get('/parents', [App\Http\Controllers\Api\ParentsController::class,'index']);
+    Route::post('/parents', [App\Http\Controllers\Api\ParentsController::class,'store']);
 });
 
 
