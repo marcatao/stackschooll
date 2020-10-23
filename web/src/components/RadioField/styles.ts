@@ -4,7 +4,7 @@ export interface Props {
   checked: boolean;
 }
 
-export const RadioButton = styled.div<Props>`
+export const RadioButtonWrapper = styled.div<Props>`
   display: flex;
 
   margin: 0.5rem;
@@ -13,7 +13,7 @@ export const RadioButton = styled.div<Props>`
   cursor: pointer;
 
   > svg {
-    margin-right: 1.5rem;
+    margin-right: 1rem;
 
     border: none;
     border-radius: 50%;

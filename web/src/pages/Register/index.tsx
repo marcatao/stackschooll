@@ -18,6 +18,7 @@ import { Label } from "../../components/Label";
 import { InputField } from "../../components/InputField";
 import { PasswordField } from "../../components/PasswordField";
 import { RadioField } from "../../components/RadioField";
+import { RadioGroup } from "../../components/RadioGroup";
 import { Button } from "../../components/Button";
 
 const Register = (): JSX.Element => {
@@ -59,8 +60,18 @@ const Register = (): JSX.Element => {
             </fieldset>
 
             <fieldset>
-              <RadioField description="Escola" />
-              {/* <RadioField description="Responsável" /> */}
+              <Label>Qual o perfil do usuário.</Label>
+              <RadioGroup
+                properties={[
+                  { name: "Escola", description: "Escola", value: true },
+                  {
+                    name: "Responsavel",
+                    description: "Responsável",
+                    value: false
+                  },
+                  { name: "Aluno", description: "Aluno", value: false }
+                ]}
+              />
             </fieldset>
 
             <Button name="register" onClick={handleSubmitRegister}>

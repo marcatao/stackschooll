@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-import { RadioButton } from "./styles";
+import { RadioButtonWrapper } from "./styles";
 
 import { Label } from "../Label";
 
@@ -8,32 +8,28 @@ import RadioOn from "../../assets/images/icons/radio-on.svg";
 import RadioOff from "../../assets/images/icons/radio-off.svg";
 
 export interface RadioProps {
+  name: string;
   description: string;
-  isChecked?: () => boolean;
-  onClick?: (value: boolean) => void;
+  value?: boolean;
+  onClick?: (description: string, value: boolean) => void;
 }
 
 const RadioField: React.FC<RadioProps> = ({
+  name,
   description,
+  value,
   onClick
 }): JSX.Element => {
-  const [checked, setChecked] = useState<boolean>(false);
-
   return (
-    <RadioButton
-      checked={checked}
-      onClick={() => {
-        setChecked(!checked);
-
-        if (onClick) {
-          onClick(checked);
-        }
-      }}
+    <RadioButtonWrapper
+      id={name}
+      checked={value}
+      onClick={() => onClick(description, value)}
     >
       <RadioOff />
-      {checked && <RadioOn />}
+      {value && <RadioOn />}
       <Label>{description}</Label>
-    </RadioButton>
+    </RadioButtonWrapper>
   );
 };
 
