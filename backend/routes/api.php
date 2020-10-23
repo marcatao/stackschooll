@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/schedule', [App\Http\Controllers\Api\ScheduleController::class,'index']);
     Route::post('/schedule', [App\Http\Controllers\Api\ScheduleController::class,'store']);
 
+    Route::get('/student', [App\Http\Controllers\Api\StudentController::class,'index']);
     Route::post('/student', [App\Http\Controllers\Api\StudentController::class,'store']);
 });
 
