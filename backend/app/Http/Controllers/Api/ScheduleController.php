@@ -17,6 +17,15 @@ class ScheduleController extends Controller
     }
 
     public function store(Request $request){
+
+        $validatedData = $request->validate([
+            'description' => ['required'],
+            'week_day' => ['required'],
+            'start_time' => ['required','integer'],
+            'end_time' => ['required','integer']
+         ]);
+
+
         $sc = new Schedules;
         $sc->description = $request->description;
         $sc->week_day = $request->week_day;

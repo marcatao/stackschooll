@@ -17,6 +17,12 @@ class StudentController extends Controller
         return response()->json($students);
     }
     public function store(Request $request){
+
+        $validatedData = $request->validate([
+            'name' => ['required'],
+            'address' => ['required']
+         ]);
+
         $st = new Students;
         $st->name = $request->name;
         $st->profile_photo_path = "0";

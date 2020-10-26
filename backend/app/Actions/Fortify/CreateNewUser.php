@@ -20,11 +20,15 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
       
-      //  Validator::make($input, [
-      //      'name' => ['required', 'string', 'max:255'],
-      //      'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-      //      'password' => $this->passwordRules(),
-      //  ])->validate();
+        Validator::make($input, [
+            'cpf_cnpj' => ['required'],
+            'user_name' => ['required'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'profile' => ['required'],
+            'password' => $this->passwordRules(),
+            'address' => ['required'],
+        ])->validate();
      
         return User::create([
             'cpf_cnpj' => $input['cpf_cnpj'],

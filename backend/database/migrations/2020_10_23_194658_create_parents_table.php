@@ -17,6 +17,7 @@ class CreateParentsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('student_id')->constrained('students');
+            $table->foreignId('school_id')->constrained('schools');
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@ class UserController extends Controller
     }
 
     public function login_token(Request $request){
-        $request->validate(['email' => 'required|email','password' => 'required','device_name' => 'required',]);
+        $request->validate(['email' => 'required|email','password' => 'required','device_name' => 'required']);
         $user = User::where('email', $request->email)->first();
         if (! $user || ! Hash::check($request->password, $user->password)) {
             return response()->json(['Message: The provided credentials are incorrect.'],203);
