@@ -27,7 +27,9 @@ import { BackTo } from "../../components/BackTo";
 const Register = (): JSX.Element => {
   const router = useRouter();
 
-  const handleSubmitRegister = () => <></>;
+  const handleSubmitRegister = () => {
+    router.push("/success");
+  };
 
   return (
     <RegisterPageContent>
