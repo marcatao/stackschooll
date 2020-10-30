@@ -42,7 +42,7 @@ const RecoveryPassword = (): JSX.Element => {
           </Header>
 
           <div>
-            <Title>Eita,esqueceu sua senha?</Title>
+            <Title>Esqueceu sua senha?</Title>
             <Label>Preencha seu e-mail de recuperação.</Label>
           </div>
 

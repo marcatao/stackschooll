@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -7,12 +7,11 @@ import {
   LogoContainer,
   Banner,
   BannerSection,
-  Section,
+  FormSection,
   ContentSection
 } from "./styles";
 
 import LogoSVG from "../../assets/images/stackschool.svg";
-// import BackgroundSVG from "../../assets/images/background_1.svg";
 
 import { Title } from "../../components/Title";
 import { Label } from "../../components/Label";
@@ -21,19 +20,30 @@ import { PasswordField } from "../../components/PasswordField";
 import { CheckBoxField } from "../../components/CheckBoxField";
 import { Button } from "../../components/Button";
 
+import { UserLogin } from "../../model/login";
+import { api } from "../../services/api";
+
 const Login = (): JSX.Element => {
   const router = useRouter();
+  const [login, setLogin] = useState<UserLogin>();
 
-  const handleSubmitLogin = () => {
-    router.push("/dashboard");
+  const handleSubmitLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const response = await api.post("api/login", {
+      ...login,
+      device_name: "device_name"
+    });
+
+    console.log(response.data);
+
+    // router.push("/dashboard");
   };
 
   return (
     <LoginPageContent>
       <Banner>
         <BannerSection>
-          {/* <BackgroundSVG /> */}
-
           <LogoContainer>
             <LogoSVG />
             <h2>Plataforma de saída de alunos.</h2>
@@ -41,42 +51,50 @@ const Login = (): JSX.Element => {
         </BannerSection>
       </Banner>
 
-      <form>
-        <Section>
-          <ContentSection>
-            <div>
-              <Title>Fazer Login</Title>
+      <FormSection onSubmit={handleSubmitLogin}>
+        <ContentSection>
+          <div>
+            <Title>Fazer Login</Title>
+            <Label>
+              Não tem conta ?{" "}
               <Label>
-                Não tem conta ?{" "}
-                <Label>
-                  <Link href="/register">Cadastre-se</Link>
-                </Label>
+                <Link href="/register">Cadastre-se</Link>
               </Label>
-            </div>
+            </Label>
+          </div>
 
-            <fieldset>
-              <InputField
-                name="email"
-                label="E-mail"
-                autoComplete="email"
-                maxLength={50}
-              />
-              <PasswordField name="senha" label="Senha" maxLength={50} />
-            </fieldset>
+          <fieldset>
+            <InputField
+              name="email"
+              label="E-mail"
+              autoComplete="email"
+              maxLength={50}
+              onChange={e => setLogin({ ...login, email: e.target.value })}
+            />
+            <PasswordField
+              name="senha"
+              label="Senha"
+              maxLength={50}
+              onChange={e => setLogin({ ...login, password: e.target.value })}
+            />
+          </fieldset>
 
-            <div>
-              <CheckBoxField description="Lembra-me" />
-              <Label>
-                <Link href="/recovery">Esqueci minha senha</Link>
-              </Label>
-            </div>
+          <div>
+            <CheckBoxField description="Lembra-me" />
+            <Label>
+              <Link href="/recovery">Esqueci minha senha</Link>
+            </Label>
+          </div>
 
-            <Button name="login" onClick={handleSubmitLogin}>
-              Entrar
-            </Button>
-          </ContentSection>
-        </Section>
-      </form>
+          <Button
+            button="submit"
+            name="login"
+            // onClick={handleSubmitLogin}
+          >
+            Entrar
+          </Button>
+        </ContentSection>
+      </FormSection>
     </LoginPageContent>
   );
 };

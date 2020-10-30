@@ -18,6 +18,10 @@ export const ButtonStyle = styled.button`
     background: ${props => props.theme.colors.secondaryDark};
   }
 
+  &:active {
+    outline-color: ${props => props.theme.colors.textTitle};
+  }
+
   > span {
     font: 600 1.666666667rem Archivo;
     line-height: 2.7rem;

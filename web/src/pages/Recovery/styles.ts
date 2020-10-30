@@ -10,13 +10,14 @@ export const RegisterPageContent = styled.div`
   flex-direction: column;
 
   color: ${props => props.theme.colors.textPrimary};
-  background: ${props => props.theme.colors.primary};
+  //background: ${props => props.theme.colors.primary};
 
   @media (min-width: 1100px) {
     display: grid;
 
     grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1fr;
+    //grid-template-columns: 1fr 1fr;
+    grid-template-columns: 550px 550px;
     grid-template-areas: "banner section";
   }
 `;
@@ -26,15 +27,16 @@ export const Banner = styled.section`
   justify-content: center;
 
   width: 100%;
-  height: 20%;
-  min-height: 200px;
+
+  height: 50vh;
+  min-height: 400px;
+
+  background: ${props => props.theme.colors.primary};
 
   @media (min-width: 1100px) {
     grid-area: banner;
 
     justify-content: flex-end;
-
-    height: 50vh;
 
     padding-left: 10%;
     padding-right: 10%;
@@ -70,7 +72,7 @@ export const Section = styled.section`
   justify-content: center;
   align-items: center;
 
-  height: 80%;
+  height: 50vh;
 
   padding-top: 3rem;
 
@@ -82,6 +84,7 @@ export const Section = styled.section`
     justify-content: flex-start;
     align-items: center;
 
+    padding-top: 0;
     padding-left: 10%;
     padding-right: 10%;
 
