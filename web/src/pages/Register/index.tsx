@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -7,7 +7,7 @@ import {
   LogoContainer,
   Banner,
   BannerSection,
-  Section,
+  FormSection,
   ContentSection,
   Header
 } from "./styles";
@@ -20,15 +20,59 @@ import { InputField } from "../../components/InputField";
 import { PasswordField } from "../../components/PasswordField";
 import { RadioGroup } from "../../components/RadioGroup";
 import { Button } from "../../components/Button";
-
 import { BackTo } from "../../components/BackTo";
-// import { Header } from "../../components/Header";
+
+import { Profile } from "../../model/profile";
+import { api } from "../../services/api";
 
 const Register = (): JSX.Element => {
   const router = useRouter();
+  const [userProfile, setProfile] = useState<Profile>({
+    name: "",
+    email: "",
+    password: "",
+    profile: "escola",
+    cpfcnpj: "111.111.999-55",
+    username: "",
+    address: "Rua: Almada,588 jardim santo alberto Santo andré"
+  });
 
-  const handleSubmitRegister = () => {
-    router.push("/success");
+  const handleSubmitRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const {
+        name,
+        email,
+        password,
+        profile,
+        cpfcnpj,
+        username,
+        address
+      } = userProfile;
+
+      const information = {
+        cpf_cnpj: cpfcnpj,
+        user_name: username,
+        name,
+        email,
+        profile,
+        password,
+        address
+      };
+
+      console.log(information);
+
+      const response = await api.post("api/register", information);
+
+      // console.log(response.data);
+
+      if (response.data) {
+        router.push("/success");
+      }
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
@@ -41,7 +85,7 @@ const Register = (): JSX.Element => {
           </LogoContainer>
         </BannerSection>
       </Banner>
-      <Section>
+      <FormSection onSubmit={handleSubmitRegister}>
         <ContentSection>
           <Header>
             <BackTo link="/" />
@@ -53,39 +97,63 @@ const Register = (): JSX.Element => {
           </div>
 
           <fieldset>
-            <InputField name="name" label="Nome" maxLength={50} />
-            <InputField name="last" label="Sobrenome" maxLength={50} />
+            <InputField
+              name="name"
+              label="Nome"
+              maxLength={50}
+              onChange={e =>
+                setProfile({ ...userProfile, name: e.target.value })
+              }
+            />
 
             <InputField
               name="email"
               label="E-mail"
               autoComplete="email"
               maxLength={50}
+              onChange={e =>
+                setProfile({
+                  ...userProfile,
+                  email: e.target.value,
+                  username: e.target.value
+                })
+              }
             />
 
-            <PasswordField name="senha" label="Senha" maxLength={50} />
+            <PasswordField
+              name="senha"
+              label="Senha"
+              maxLength={50}
+              onChange={e =>
+                setProfile({ ...userProfile, password: e.target.value })
+              }
+            />
           </fieldset>
 
           <fieldset>
             <Label>Qual o perfil do usuário.</Label>
             <RadioGroup
               properties={[
-                { name: "Escola", description: "Escola", value: true },
+                { name: "escola", description: "Escola", value: true },
                 {
-                  name: "Responsavel",
+                  name: "responsavel",
                   description: "Responsável",
                   value: false
-                },
-                { name: "Aluno", description: "Aluno", value: false }
+                }
               ]}
+              onChange={(name, value) => {
+                if (value) {
+                  setProfile({ ...userProfile, profile: name });
+                }
+              }}
             />
           </fieldset>
 
-          <Button name="register" onClick={handleSubmitRegister}>
+          <Button button="submit" name="register">
             Concluir Cadastro
           </Button>
         </ContentSection>
-      </Section>
+      </FormSection>
     </RegisterPageContent>
   );
 };

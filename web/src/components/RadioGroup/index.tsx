@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { RadioGroupWrapper } from "./styles";
 
@@ -6,13 +6,13 @@ import { RadioField, RadioProps } from "../RadioField";
 
 export interface RadioGroupProps {
   properties: RadioProps[];
+  onChange?: (name: string, value: boolean, description?: string) => void;
 }
 
-// const RadioElement: React.FC<RadioProps> = (props): JSX.Element => {
-//   return <RadioField {...props} />;
-// };
-
-const RadioGroup: React.FC<RadioGroupProps> = ({ properties }): JSX.Element => {
+const RadioGroup: React.FC<RadioGroupProps> = ({
+  properties,
+  onChange
+}): JSX.Element => {
   const [radios, setRadios] = useState<RadioGroupProps>({ properties });
 
   const changeGroupRadioValue = (description: string, value: boolean) => {
@@ -30,7 +30,15 @@ const RadioGroup: React.FC<RadioGroupProps> = ({ properties }): JSX.Element => {
     setRadios({ properties: values });
   };
 
-  const handleChangeValue = (description: string, value: boolean) => {
+  const handleChangeValue = (
+    name: string,
+    description: string,
+    value: boolean
+  ) => {
+    if (onChange) {
+      onChange(name, value, description);
+    }
+
     changeGroupRadioValue(description, value);
   };
 
@@ -43,7 +51,9 @@ const RadioGroup: React.FC<RadioGroupProps> = ({ properties }): JSX.Element => {
             name={radio.name}
             description={radio.description}
             value={radio.value}
-            onClick={() => handleChangeValue(radio.description, !radio.value)}
+            onClick={() =>
+              handleChangeValue(radio.name, radio.description, !radio.value)
+            }
           />
         );
       })}

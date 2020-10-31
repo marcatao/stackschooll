@@ -30,14 +30,18 @@ const Login = (): JSX.Element => {
   const handleSubmitLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const response = await api.post("api/login", {
-      ...login,
-      device_name: "device_name"
-    });
+    try {
+      const response = await api.post<string>("api/login", {
+        ...login,
+        device_name: "device_name"
+      });
 
-    console.log(response.data);
-
-    // router.push("/dashboard");
+      if (response.data) {
+        router.push("/dashboard");
+      }
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
@@ -86,11 +90,7 @@ const Login = (): JSX.Element => {
             </Label>
           </div>
 
-          <Button
-            button="submit"
-            name="login"
-            // onClick={handleSubmitLogin}
-          >
+          <Button button="submit" name="login">
             Entrar
           </Button>
         </ContentSection>

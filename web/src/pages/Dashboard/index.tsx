@@ -1,9 +1,26 @@
 import React from "react";
 
-// import { DashboardWrapper } from "./styles";
+import {
+  DashaboardPageContent,
+  LogoWrapper,
+  HeaderWrapper,
+  ProfileWrapper,
+  SideWrapper,
+  MainWrapper
+} from "./styles";
 
 const Dashboard = (): JSX.Element => {
-  return <h2>Welcome to dashboard </h2>;
+  return (
+    <DashaboardPageContent>
+      <LogoWrapper />
+      <HeaderWrapper>
+        <h2>Welcome to dashboard</h2>
+      </HeaderWrapper>
+      <ProfileWrapper />
+      <SideWrapper />
+      <MainWrapper />
+    </DashaboardPageContent>
+  );
 };
 
 export { Dashboard };

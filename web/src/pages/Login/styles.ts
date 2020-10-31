@@ -10,14 +10,16 @@ export const LoginPageContent = styled.div`
   flex-direction: column;
 
   color: ${props => props.theme.colors.textPrimary};
-  //background: ${props => props.theme.colors.primary};
 
   @media (min-width: 1100px) {
     display: grid;
 
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
     grid-template-rows: 1fr;
-    //grid-template-columns: 1fr 1fr;
-    grid-template-columns: 550px 550px;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas: "banner section";
   }
 `;
