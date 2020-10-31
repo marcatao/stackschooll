@@ -22,7 +22,6 @@ class CreateNewUser implements CreatesNewUsers
       
         Validator::make($input, [
             'cpf_cnpj' => ['required'],
-            'user_name' => ['required'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'profile' => ['required'],
@@ -32,7 +31,6 @@ class CreateNewUser implements CreatesNewUsers
      
         return User::create([
             'cpf_cnpj' => $input['cpf_cnpj'],
-            'user_name' => $input['user_name'],
             'name' => $input['name'],
             'email' => $input['email'],
             'profile' => $input['profile'],
