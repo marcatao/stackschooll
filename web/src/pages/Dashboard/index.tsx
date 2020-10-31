@@ -9,14 +9,26 @@ import {
   MainWrapper
 } from "./styles";
 
+import { SignOut } from "../../components/SignOut";
+import { Avatar } from "../../components/Avatar";
+
+import LogoStackSchoolSVG from "../../assets/images/logostackschool.svg";
+import LogoSVG from "../../assets/images/stackschool.svg";
+
 const Dashboard = (): JSX.Element => {
   return (
     <DashaboardPageContent>
-      <LogoWrapper />
+      <LogoWrapper>
+        <LogoStackSchoolSVG />
+      </LogoWrapper>
       <HeaderWrapper>
-        <h2>Welcome to dashboard</h2>
+        <LogoSVG />
+        <h2>Plataforma de saída de alunos.</h2>
       </HeaderWrapper>
-      <ProfileWrapper />
+      <ProfileWrapper>
+        <Avatar name="Anderson Gomes" />
+        <SignOut />
+      </ProfileWrapper>
       <SideWrapper />
       <MainWrapper />
     </DashaboardPageContent>

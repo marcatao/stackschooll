@@ -10,7 +10,7 @@ export const DashaboardPageContent = styled.div`
     display: grid;
 
     grid-template-columns: 256px auto 256px;
-    grid-template-rows: 64px auto;
+    grid-template-rows: 80px auto;
 
     grid-template-areas:
       "Logo TopBar Prof"
@@ -18,18 +18,43 @@ export const DashaboardPageContent = styled.div`
   }
 `;
 export const LogoWrapper = styled.div`
+  display: flex;
+
   @media (min-width: 1100px) {
     grid-area: Logo;
 
+    justify-content: center;
+    align-items: center;
+
     background: ${props => props.theme.colors.primaryDark};
+
+    > svg {
+      width: 50%;
+      height: 50%;
+    }
   }
 `;
 
 export const HeaderWrapper = styled.header`
+  display: flex;
+
   @media (min-width: 1100px) {
     grid-area: TopBar;
 
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
     background: ${props => props.theme.colors.primaryDark};
+
+    > svg {
+      width: 25%;
+      height: 25%;
+    }
+
+    > h2 {
+      margin-top: 0.8rem;
+    }
   }
 `;
 
@@ -37,7 +62,15 @@ export const ProfileWrapper = styled.div`
   @media (min-width: 1100px) {
     grid-area: Prof;
 
-    background: ${props => props.theme.colors.primaryDark};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+      to right,
+      ${props => props.theme.colors.primaryDark},
+      ${props => props.theme.colors.primary}
+    );
   }
 `;
 
@@ -46,6 +79,13 @@ export const SideWrapper = styled.aside`
     grid-area: Side;
 
     background: ${props => props.theme.colors.inputBackground};
+    /* background: linear-gradient(
+      to bottom,
+      ${props =>
+      props.theme.colors.primaryDark},
+      ${props =>
+      props.theme.colors.inputBackground}
+    ); */
   }
 `;
 

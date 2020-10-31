@@ -15,6 +15,10 @@ export const SignOutStyle = styled.a`
   > svg {
     width: 25px;
     height: 25px;
+
+    > path {
+      fill: ${props => props.theme.colors.textPrimary};
+    }
   }
 
   cursor: pointer;

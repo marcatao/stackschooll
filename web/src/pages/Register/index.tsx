@@ -61,11 +61,11 @@ const Register = (): JSX.Element => {
         address
       };
 
-      console.log(information);
-
-      const response = await api.post("api/register", information);
-
-      // console.log(response.data);
+      const response = await api.post("api/register", information, {
+        headers: {
+          accept: "application/json"
+        }
+      });
 
       if (response.data) {
         router.push("/success");
