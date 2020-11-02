@@ -1,3 +1,3 @@
-import { Success } from "./Success";
+import { Success } from "../containers/Success";
 
 export default Success;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { GlobalContainer } from "../../styles/global";
 
-export const LoginPageContent = styled.div`
+export const RegisterPageContent = styled.main`
   width: 100vw;
   height: 100vh;
 
@@ -10,6 +10,7 @@ export const LoginPageContent = styled.div`
   flex-direction: column;
 
   color: ${props => props.theme.colors.textPrimary};
+  background: ${props => props.theme.colors.primary};
 
   @media (min-width: 1100px) {
     display: grid;
@@ -29,9 +30,8 @@ export const Banner = styled.section`
   justify-content: center;
 
   width: 100%;
-
-  height: 50vh;
-  min-height: 400px;
+  height: 20%;
+  min-height: 200px;
 
   background: ${props => props.theme.colors.primary};
 
@@ -39,6 +39,8 @@ export const Banner = styled.section`
     grid-area: banner;
 
     justify-content: flex-end;
+
+    height: 50vh;
 
     padding-left: 10%;
     padding-right: 10%;
@@ -72,8 +74,9 @@ export const BannerSection = styled(GlobalContainer)`
 export const FormSection = styled.form`
   display: flex;
   justify-content: center;
+  align-items: center;
 
-  height: 50vh;
+  height: 80%;
 
   padding-top: 3rem;
 
@@ -97,18 +100,21 @@ export const FormSection = styled.form`
 export const ContentSection = styled(GlobalContainer)`
   display: flex;
   flex-direction: column;
-  align-items: center;
 
   max-width: 500px;
 
+  height: 100%;
+
   > div {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
 
     width: 100%;
-
     margin-bottom: 2rem;
+
+    > span + span {
+      margin-top: 2rem;
+    }
   }
 
   > fieldset {
@@ -119,7 +125,15 @@ export const ContentSection = styled(GlobalContainer)`
 
     margin-bottom: 2rem;
 
+    > div > input {
+      border-radius: 0.8rem 0.8rem 0 0;
+    }
+
     > div + div > input {
+      border-radius: 0 0 0 0;
+    }
+
+    > div + div + div > input {
       border-radius: 0 0 0.8rem 0.8rem;
     }
   }
@@ -130,14 +144,18 @@ export const ContentSection = styled(GlobalContainer)`
 
   @media (min-width: 1100px) {
     max-width: 400px;
-
-    position: relative;
-
-    > div > span + span {
-      position: absolute;
-      bottom: -70px;
-    }
+    max-height: 600px;
   }
+`;
+
+export const Header = styled.header`
+  display: flex;
+
+  width: 100%;
+  max-width: 500px;
+  min-width: 400px;
+
+  margin-bottom: 2rem;
 `;
 
 export const LogoContainer = styled.div`
@@ -155,9 +173,7 @@ export const LogoContainer = styled.div`
   > h2 {
     font-weight: 500;
     font-size: 2.4rem;
-
     line-height: 4.6rem;
-
     margin-top: 0.8rem;
   }
 `;

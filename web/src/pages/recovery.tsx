@@ -1,3 +1,3 @@
-import { RecoveryPassword } from "../pages/Recovery";
+import { RecoveryPassword } from "../containers/Recovery";
 
 export default RecoveryPassword;

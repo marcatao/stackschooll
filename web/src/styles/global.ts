@@ -49,7 +49,7 @@ export default createGlobalStyle`
     }
 `;
 
-export const GlobalContainer = styled.div`
+export const GlobalContainer = styled.section`
   width: 90vw;
   max-width: 700px;
 `;

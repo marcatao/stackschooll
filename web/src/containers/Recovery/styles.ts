@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { GlobalContainer } from "../../styles/global";
 
-export const RegisterPageContent = styled.div`
+export const RegisterPageContent = styled.main`
   width: 100vw;
   height: 100vh;
 
@@ -21,6 +21,7 @@ export const RegisterPageContent = styled.div`
 
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
+    //grid-template-columns: 550px 550px;
     grid-template-areas: "banner section";
   }
 `;
@@ -30,8 +31,9 @@ export const Banner = styled.section`
   justify-content: center;
 
   width: 100%;
-  height: 20%;
-  min-height: 200px;
+
+  height: 50vh;
+  min-height: 400px;
 
   background: ${props => props.theme.colors.primary};
 
@@ -39,8 +41,6 @@ export const Banner = styled.section`
     grid-area: banner;
 
     justify-content: flex-end;
-
-    height: 50vh;
 
     padding-left: 10%;
     padding-right: 10%;
@@ -71,12 +71,12 @@ export const BannerSection = styled(GlobalContainer)`
   }
 `;
 
-export const FormSection = styled.form`
+export const Section = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
 
-  height: 80%;
+  height: 50vh;
 
   padding-top: 3rem;
 
@@ -124,18 +124,6 @@ export const ContentSection = styled(GlobalContainer)`
     border: none;
 
     margin-bottom: 2rem;
-
-    > div > input {
-      border-radius: 0.8rem 0.8rem 0 0;
-    }
-
-    > div + div > input {
-      border-radius: 0 0 0 0;
-    }
-
-    > div + div + div > input {
-      border-radius: 0 0 0.8rem 0.8rem;
-    }
   }
 
   > div > span + span > span {
@@ -144,7 +132,7 @@ export const ContentSection = styled(GlobalContainer)`
 
   @media (min-width: 1100px) {
     max-width: 400px;
-    max-height: 600px;
+    max-height: 400px;
   }
 `;
 

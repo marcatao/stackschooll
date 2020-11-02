@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { GlobalContainer } from "../../styles/global";
 
-export const SuccessPageContent = styled.div`
+export const SuccessPageContent = styled.main`
   width: 100vw;
   height: 100vh;
 
