@@ -9,13 +9,19 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WellcomeMail;
+
 class UserController extends Controller
 {
   
     public function store(Request $request){
         $new_user = new \App\Actions\Fortify\CreateNewUser;
         $stored = $new_user->create($request->only(['cpf_cnpj','user_name','name','email','profile','password','address']));
-        if($stored) return response()->json($stored);
+        if($stored){ 
+            Mail::to($stored->email)->send(new WellcomeMail());
+            return response()->json($stored);
+        }
         return response()->json('Ainda precisamos tratar esses erros');
     }
 
