@@ -9,7 +9,7 @@ export const DashaboardPageContent = styled.div`
   @media (min-width: 1100px) {
     display: grid;
 
-    grid-template-columns: 256px auto 256px;
+    grid-template-columns: 256px auto 400px;
     grid-template-rows: 80px auto;
 
     grid-template-areas:
@@ -66,7 +66,6 @@ export const ProfileWrapper = styled.div`
     grid-area: Prof;
 
     display: flex;
-    justify-content: center;
     align-items: center;
 
     background: linear-gradient(

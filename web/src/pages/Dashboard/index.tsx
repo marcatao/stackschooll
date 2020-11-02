@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   DashaboardPageContent,
@@ -24,14 +24,22 @@ import UserParentSVG from "../../assets/images/icons/user-parent-svg.svg";
 import StudentSVG from "../../assets/images/icons/students-svg.svg";
 
 const Dashboard = (): JSX.Element => {
+  const [title, setTitle] = useState("Notificações");
+
   const items: MenuItemProps[] = [
     {
       name: "notification",
       title: "Notificações",
+      selected: true,
       icon: <CheckNotificationSVG />
     },
-    { name: "parents", title: "Responsáveis", icon: <UserParentSVG /> },
-    { name: "students", title: "Alunos", icon: <StudentSVG /> }
+    {
+      name: "parents",
+      title: "Responsáveis",
+      selected: false,
+      icon: <UserParentSVG />
+    },
+    { name: "students", title: "Alunos", selected: false, icon: <StudentSVG /> }
   ];
 
   return (
@@ -51,11 +59,11 @@ const Dashboard = (): JSX.Element => {
       </ProfileWrapper>
 
       <SideWrapper>
-        <Menu menu={items} />
+        <Menu items={items} onSelected={item => setTitle(item.title)} />
       </SideWrapper>
 
       <MainWrapper>
-        <Title>Notificações</Title>
+        <Title>{title}</Title>
       </MainWrapper>
     </DashaboardPageContent>
   );

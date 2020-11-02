@@ -1,4 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+export interface ItemSelectedProps {
+  selected?: boolean;
+}
 
 export const MenuWrapper = styled.menu`
   display: flex;
@@ -20,7 +24,24 @@ export const MenuItems = styled.ul`
   }
 `;
 
-export const MenuItem = styled.li`
+const itemSelectedStyle = css`
+  border-right: 3px solid ${props => props.theme.colors.primary};
+  background: ${props => props.theme.colors.background};
+
+  > span,
+  a {
+    color: ${props => props.theme.colors.textTitle};
+    font-weight: bold;
+  }
+
+  > svg {
+    > path {
+      fill: ${props => props.theme.colors.textTitle};
+    }
+  }
+`;
+
+export const MenuItem = styled.li<ItemSelectedProps>`
   display: flex;
   align-items: center;
 
@@ -55,21 +76,17 @@ export const MenuItem = styled.li`
   }
 
   &:hover {
-    border-right: 3px solid ${props => props.theme.colors.primary};
-    background: ${props => props.theme.colors.background};
-
     > span,
     a {
-      // color: ${props => props.theme.colors.primary};
       color: ${props => props.theme.colors.textTitle};
-      font-weight: bold;
     }
 
     > svg {
       > path {
-        // fill: ${props => props.theme.colors.primary};
         fill: ${props => props.theme.colors.textTitle};
       }
     }
   }
+
+  ${props => props.selected && itemSelectedStyle};
 `;

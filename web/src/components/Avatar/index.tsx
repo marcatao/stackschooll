@@ -1,6 +1,8 @@
 import React from "react";
 
-import { AvatarContent } from "./styles";
+import { AvatarWrapper } from "./styles";
+
+import AvatarSVG from "../../assets/images/icons/avatar-icon-svg.svg";
 
 export interface AvatarProps {
   image?: string;
@@ -9,10 +11,10 @@ export interface AvatarProps {
 
 const Avatar: React.FC<AvatarProps> = ({ image, name }): JSX.Element => {
   return (
-    <AvatarContent>
-      <img src={image} />
+    <AvatarWrapper>
+      {image ? <img src={image} /> : <AvatarSVG />}
       <span>{name}</span>
-    </AvatarContent>
+    </AvatarWrapper>
   );
 };
 

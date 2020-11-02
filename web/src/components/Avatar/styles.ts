@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-export const AvatarContent = styled.div`
+export const AvatarWrapper = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+
+  cursor: pointer;
 
   > img {
     width: 40px;
@@ -14,11 +15,38 @@ export const AvatarContent = styled.div`
     border-radius: 50%;
   }
 
+  > svg {
+    width: 15%;
+    height: 15%;
+
+    > path {
+      fill: ${props => props.theme.colors.textPrimary};
+
+      transition: fill 0.2s;
+    }
+  }
+
   > span {
     font-size: 1.4rem;
     line-height: 3.1rem;
     color: ${props => props.theme.colors.titlePrimary};
 
     margin: 1rem 1rem;
+
+    transition: color 0.2s;
+  }
+
+  &:hover {
+    > span,
+    a {
+      color: ${props => props.theme.colors.textTitle};
+      font-weight: bold;
+    }
+
+    > svg {
+      > path {
+        fill: ${props => props.theme.colors.textTitle};
+      }
+    }
   }
 `;

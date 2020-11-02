@@ -1,26 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
-import { MenuWrapper, MenuItems, MenuItem } from "./styles";
+import { MenuWrapper, MenuItems, MenuItem, ItemSelectedProps } from "./styles";
 
 import { Label } from "../Label";
 
-export interface MenuItemProps {
+export interface MenuItemProps extends ItemSelectedProps {
   name: string;
   title: string;
   link?: string;
   icon?: JSX.Element;
+  onClick?: () => void;
 }
 
 export interface MenuProps {
-  menu: MenuItemProps[];
+  items: MenuItemProps[];
+  onSelected?: (item: MenuItemProps) => void;
 }
 
-const Item: React.FC<MenuItemProps> = ({ title, link, icon }): JSX.Element => {
+const Item: React.FC<MenuItemProps> = ({
+  name,
+  title,
+  selected,
+  link,
+  icon,
+  onClick
+}): JSX.Element => {
   const Icon = (): JSX.Element => <>{icon}</>;
 
   return (
-    <MenuItem>
+    <MenuItem
+      onClick={() => {
+        if (onClick) onClick();
+      }}
+      selected={selected}
+    >
       <Icon />
       <Label>
         <Link href={""}>{title}</Link>
@@ -29,12 +43,40 @@ const Item: React.FC<MenuItemProps> = ({ title, link, icon }): JSX.Element => {
   );
 };
 
-const Menu: React.FC<MenuProps> = ({ menu }): JSX.Element => {
+const Menu: React.FC<MenuProps> = ({ items, onSelected }): JSX.Element => {
+  const [menu, setMenu] = useState<MenuProps>({ items });
+
+  const handleItemClick = (itemClick: MenuItemProps) => {
+    const values = menu.items.map((item: MenuItemProps) => {
+      if (item.name === itemClick.name) {
+        return { ...item, selected: true };
+      } else {
+        return {
+          ...item,
+          selected: false
+        };
+      }
+    });
+
+    setMenu({ items: values });
+  };
+
+  useEffect(() => {
+    if (onSelected) {
+      const lastItemSelected = menu.items.filter(item => item.selected);
+
+      // get last item selected
+      onSelected(lastItemSelected[0]);
+    }
+  }, [menu.items]);
+
   return (
     <MenuWrapper>
       <MenuItems>
-        {menu.map((item: MenuItemProps, index) => {
-          return <Item key={index} {...item} />;
+        {menu.items.map((item: MenuItemProps, index) => {
+          return (
+            <Item key={index} {...item} onClick={() => handleItemClick(item)} />
+          );
         })}
       </MenuItems>
     </MenuWrapper>
