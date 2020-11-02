@@ -9,7 +9,7 @@ export const AvatarContent = styled.div`
     width: 40px;
     height: 40px;
 
-    background: ${props => props.theme.colors.boxBase};
+    background: ${props => props.theme.colors.titlePrimary};
 
     border-radius: 50%;
   }

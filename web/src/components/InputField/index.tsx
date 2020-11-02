@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, useState } from "react";
+import React, { InputHTMLAttributes } from "react";
 
 import { InputWrapper, Input, Label } from "./styles";
 

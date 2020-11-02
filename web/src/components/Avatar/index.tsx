@@ -10,7 +10,7 @@ export interface AvatarProps {
 const Avatar: React.FC<AvatarProps> = ({ image, name }): JSX.Element => {
   return (
     <AvatarContent>
-      <img src={image} alt={name} />
+      <img src={image} />
       <span>{name}</span>
     </AvatarContent>
   );

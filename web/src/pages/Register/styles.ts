@@ -21,7 +21,6 @@ export const RegisterPageContent = styled.div`
 
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
-    //grid-template-columns: 550px 550px;
     grid-template-areas: "banner section";
   }
 `;

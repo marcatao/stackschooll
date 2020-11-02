@@ -68,7 +68,7 @@ const Register = (): JSX.Element => {
       });
 
       if (response.data) {
-        router.push("/success");
+        await router.push("/success");
       }
     } catch (error) {
       alert(error);

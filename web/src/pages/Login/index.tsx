@@ -37,7 +37,7 @@ const Login = (): JSX.Element => {
       });
 
       if (response.data) {
-        router.push("/dashboard");
+        await router.push("/dashboard");
       }
     } catch (error) {
       alert(error);

@@ -52,7 +52,10 @@ export const HeaderWrapper = styled.header`
       height: 25%;
     }
 
-    > h2 {
+    > span {
+      // color: ${props => props.theme.colors.titlePrimary};
+      color: ${props => props.theme.colors.textPrimary};
+
       margin-top: 0.8rem;
     }
   }
@@ -93,6 +96,14 @@ export const MainWrapper = styled.main`
   @media (min-width: 1100px) {
     grid-area: Main;
 
+    display: flex;
+
+    padding: 5rem 0 0 5rem;
+
     background: ${props => props.theme.colors.background};
+
+    //> span {
+    //color: ${props => props.theme.colors.primary};
+    //}
   }
 `;
