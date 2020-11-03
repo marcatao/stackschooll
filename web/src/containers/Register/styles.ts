@@ -120,6 +120,8 @@ export const ContentSection = styled(GlobalContainer)`
   > fieldset {
     display: flex;
 
+    flex-direction: column;
+
     width: 100%;
     border: none;
 
