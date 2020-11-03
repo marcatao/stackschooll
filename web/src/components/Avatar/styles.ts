@@ -6,6 +6,9 @@ export const AvatarWrapper = styled.div`
 
   cursor: pointer;
 
+  max-width: 300px;
+  max-height: 48px;
+
   > img {
     width: 40px;
     height: 40px;
@@ -48,5 +51,9 @@ export const AvatarWrapper = styled.div`
         fill: ${props => props.theme.colors.textTitle};
       }
     }
+  }
+
+  @media (max-width: 500px) {
+    justify-content: center;
   }
 `;

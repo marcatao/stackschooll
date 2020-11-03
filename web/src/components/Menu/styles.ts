@@ -13,19 +13,28 @@ export const MenuWrapper = styled.menu`
 
 export const MenuItems = styled.ul`
   display: flex;
-  flex-direction: column;
 
   width: 100%;
-
-  margin-top: 10rem;
 
   > li:last-child {
     border-bottom: 0.1rem solid ${props => props.theme.colors.background};
   }
+
+  @media (min-width: 501px) {
+    flex-direction: column;
+
+    margin-top: 10rem;
+  }
 `;
 
 const itemSelectedStyle = css`
-  border-right: 3px solid ${props => props.theme.colors.primary};
+  border-top: 3px solid ${props => props.theme.colors.primary};
+
+  @media (min-width: 501px) {
+    border-top: none;
+    border-right: 3px solid ${props => props.theme.colors.primary};
+  }
+
   background: ${props => props.theme.colors.background};
 
   > span,
@@ -59,6 +68,9 @@ export const MenuItem = styled.li<ItemSelectedProps>`
     width: 50%;
     height: 50%;
 
+    max-width: 80px;
+    max-height: 32px;
+
     > path {
       fill: ${props => props.theme.colors.textBase};
     }
@@ -89,4 +101,31 @@ export const MenuItem = styled.li<ItemSelectedProps>`
   }
 
   ${props => props.selected && itemSelectedStyle};
+
+  @media (min-width: 501px) {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    height: 100px;
+
+    padding: 0;
+
+    > span,
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      max-width: 100px;
+      max-height: 32px;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    display: flex;
+    flex-direction: row;
+  }
 `;

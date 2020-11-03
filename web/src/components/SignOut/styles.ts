@@ -12,9 +12,12 @@ export const SignOutStyle = styled.a`
   width: 30%;
   height: 60%;
 
+  max-width: 64px;
+  max-height: 48px;
+
   padding: 0 1rem 0 1rem;
 
-  margin: 0 5rem 0 1rem;
+  margin: 0 1rem 0 1rem;
 
   > svg {
     width: 100%;
