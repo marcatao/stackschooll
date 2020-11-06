@@ -31,8 +31,14 @@ const itemSelectedStyle = css`
   border-top: 3px solid ${props => props.theme.colors.primary};
 
   @media (min-width: 501px) {
+    font-weight: bold;
+
     border-top: none;
     border-right: 3px solid ${props => props.theme.colors.primary};
+  }
+
+  @media (min-width: 1100px) {
+    font-weight: bold;
   }
 
   background: ${props => props.theme.colors.background};
@@ -40,7 +46,6 @@ const itemSelectedStyle = css`
   > span,
   a {
     color: ${props => props.theme.colors.textTitle};
-    font-weight: bold;
   }
 
   > svg {
@@ -52,12 +57,12 @@ const itemSelectedStyle = css`
 
 export const MenuItem = styled.li<ItemSelectedProps>`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 
   width: 100%;
   height: 64px;
-
-  padding-left: 1rem;
 
   transition: background 0.3s, color 0.3s, font-weight 0.3s;
   cursor: pointer;
@@ -65,26 +70,29 @@ export const MenuItem = styled.li<ItemSelectedProps>`
   border-top: 0.1rem solid ${props => props.theme.colors.background};
 
   > svg {
-    width: 50%;
-    height: 50%;
+    width: 30%;
+    height: 30%;
 
     max-width: 80px;
     max-height: 32px;
+
+    display: flex;
+    justify-content: flex-start;
 
     > path {
       fill: ${props => props.theme.colors.textBase};
     }
   }
 
-  > span,
-  a {
+  > span {
     display: flex;
+    justify-content: center;
     align-items: center;
 
     color: ${props => props.theme.colors.textBase};
 
     width: 100%;
-    height: 100%;
+    height: calc(100% - 32px);
   }
 
   &:hover {
@@ -113,13 +121,17 @@ export const MenuItem = styled.li<ItemSelectedProps>`
 
     padding: 0;
 
-    > span,
-    a {
+    > svg {
+      width: 50%;
+      height: 50%;
+    }
+
+    > span {
       display: flex;
       justify-content: center;
       align-items: center;
 
-      max-width: 100px;
+      max-width: 100%;
       max-height: 32px;
     }
   }
@@ -127,5 +139,31 @@ export const MenuItem = styled.li<ItemSelectedProps>`
   @media (min-width: 1100px) {
     display: flex;
     flex-direction: row;
+
+    justify-content: flex-start;
+    align-items: center;
+
+    padding-left: 1rem;
+
+    > svg {
+      width: 50%;
+      height: 50%;
+    }
+
+    > span {
+      display: flex;
+      justify-content: flex-start;
+
+      width: 100%;
+      max-width: calc(100% - 80px);
+
+      height: 100%;
+      max-height: 100%;
+
+      > a {
+        width: auto;
+        height: auto;
+      }
+    }
   }
 `;

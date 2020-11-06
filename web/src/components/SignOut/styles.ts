@@ -5,7 +5,7 @@ export const SignOutStyle = styled.a`
   justify-content: center;
   align-items: center;
 
-  background: ${props => props.theme.colors.primaryDark};
+  // background: ${props => props.theme.colors.primaryDark};
 
   border-radius: 1rem;
 
@@ -24,7 +24,7 @@ export const SignOutStyle = styled.a`
     height: 100%;
 
     > path {
-      fill: ${props => props.theme.colors.textPrimary};
+      fill: ${props => props.theme.colors.titlePrimary};
 
       transition: fill 0.2s;
     }
@@ -35,7 +35,7 @@ export const SignOutStyle = styled.a`
   &:hover {
     > svg {
       > path {
-        fill: ${props => props.theme.colors.textTitle};
+        fill: ${props => props.theme.colors.textPrimary};
       }
     }
   }

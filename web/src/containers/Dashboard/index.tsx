@@ -23,6 +23,8 @@ import CheckNotificationSVG from "../../assets/images/icons/check-notification-s
 import UserParentSVG from "../../assets/images/icons/user-parent-svg.svg";
 import StudentSVG from "../../assets/images/icons/students-svg.svg";
 
+import { Notification } from "../Dashboard/Notification";
+
 const Dashboard = (): JSX.Element => {
   const [title, setTitle] = useState("Notificações");
 
@@ -64,6 +66,8 @@ const Dashboard = (): JSX.Element => {
 
       <MainWrapper>
         <Title>{title}</Title>
+
+        <Notification />
       </MainWrapper>
     </DashaboardPageContent>
   );

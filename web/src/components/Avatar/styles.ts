@@ -22,8 +22,14 @@ export const AvatarWrapper = styled.div`
     width: 15%;
     height: 15%;
 
+    max-width: 45px;
+    max-height: 45px;
+
+    min-width: 32px;
+    min-height: 32px;
+
     > path {
-      fill: ${props => props.theme.colors.textPrimary};
+      fill: ${props => props.theme.colors.titlePrimary};
 
       transition: fill 0.2s;
     }
@@ -42,13 +48,12 @@ export const AvatarWrapper = styled.div`
   &:hover {
     > span,
     a {
-      color: ${props => props.theme.colors.textTitle};
-      font-weight: bold;
+      color: ${props => props.theme.colors.textPrimary};
     }
 
     > svg {
       > path {
-        fill: ${props => props.theme.colors.textTitle};
+        fill: ${props => props.theme.colors.textPrimary};
       }
     }
   }
