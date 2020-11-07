@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { useRouter } from "next/router";
+
 import {
   DashaboardPageContent,
   LogoWrapper,
@@ -16,33 +18,70 @@ import { Title } from "../../components/Title";
 
 import { Menu, MenuItemProps } from "../../components/Menu";
 
+import { getRouteFromPathname } from "../../utils";
+
 import LogoStackSchoolSVG from "../../assets/images/logostackschool.svg";
 import LogoSVG from "../../assets/images/stackschool.svg";
 
 import CheckNotificationSVG from "../../assets/images/icons/check-notification-svg.svg";
 import UserParentSVG from "../../assets/images/icons/user-parent-svg.svg";
 import StudentSVG from "../../assets/images/icons/students-svg.svg";
+import HomeSVG from "../../assets/images/icons/home-icon-svg.svg";
 
-import { Notification } from "../Dashboard/Notification";
+export const getTitleFromItems = (
+  items: MenuItemProps[],
+  target: string
+): string => {
+  let title = "";
 
-const Dashboard = (): JSX.Element => {
-  const [title, setTitle] = useState("Notificações");
+  items.forEach((item: MenuItemProps) => {
+    const route = getRouteFromPathname(item.link);
 
-  const items: MenuItemProps[] = [
+    if (route === target) {
+      title = item.title;
+    }
+  });
+
+  return title;
+};
+
+const Dashboard: React.FC = ({ children }): JSX.Element => {
+  const router = useRouter();
+  const route = getRouteFromPathname(router.pathname);
+
+  const [items] = useState<MenuItemProps[]>([
     {
-      name: "notification",
-      title: "Notificações",
+      name: "home",
+      title: "Inicío",
+      link: "/dashboard",
       selected: true,
+      icon: <HomeSVG />
+    },
+
+    {
+      name: "notifications",
+      title: "Notificações",
+      link: "/dashboard/notifications",
+      selected: false,
       icon: <CheckNotificationSVG />
     },
     {
       name: "parents",
       title: "Responsáveis",
+      link: "/dashboard/parents",
       selected: false,
       icon: <UserParentSVG />
     },
-    { name: "students", title: "Alunos", selected: false, icon: <StudentSVG /> }
-  ];
+    {
+      name: "students",
+      title: "Alunos",
+      link: "/dashboard/students",
+      selected: false,
+      icon: <StudentSVG />
+    }
+  ]);
+
+  const title = getTitleFromItems(items, route);
 
   return (
     <DashaboardPageContent>
@@ -61,13 +100,13 @@ const Dashboard = (): JSX.Element => {
       </ProfileWrapper>
 
       <SideWrapper>
-        <Menu items={items} onSelected={item => setTitle(item.title)} />
+        <Menu items={items} />
       </SideWrapper>
 
       <MainWrapper>
         <Title>{title}</Title>
 
-        <Notification />
+        {children}
       </MainWrapper>
     </DashaboardPageContent>
   );

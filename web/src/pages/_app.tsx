@@ -6,10 +6,14 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../styles/global";
 import theme from "../styles/theme";
 
+import { Dashboard } from "../containers/Dashboard";
+
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }): JSX.Element => {
   return (
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
+      <Dashboard>
+        <Component {...pageProps} />
+      </Dashboard>
 
       <GlobalStyle />
     </ThemeProvider>

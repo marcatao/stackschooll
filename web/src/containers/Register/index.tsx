@@ -25,7 +25,7 @@ import { BackTo } from "../../components/BackTo";
 import { Profile } from "../../model/profile";
 import { api } from "../../services/api";
 
-const Register = (): JSX.Element => {
+const Register: React.FC = (): JSX.Element => {
   const router = useRouter();
   const [userProfile, setProfile] = useState<Profile>({
     name: "",

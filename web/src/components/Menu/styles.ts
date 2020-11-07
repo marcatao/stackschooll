@@ -43,8 +43,11 @@ const itemSelectedStyle = css`
 
   background: ${props => props.theme.colors.background};
 
-  > span,
-  a {
+  > span {
+    color: ${props => props.theme.colors.textTitle};
+  }
+
+  > span > a {
     color: ${props => props.theme.colors.textTitle};
   }
 
@@ -64,7 +67,7 @@ export const MenuItem = styled.li<ItemSelectedProps>`
   width: 100%;
   height: 64px;
 
-  transition: background 0.3s, color 0.3s, font-weight 0.3s;
+  transition: background 0.3s, color 0.3s, font-weight 0s;
   cursor: pointer;
 
   border-top: 0.1rem solid ${props => props.theme.colors.background};
@@ -95,7 +98,12 @@ export const MenuItem = styled.li<ItemSelectedProps>`
     height: calc(100% - 32px);
   }
 
-  &:hover {
+  > span > a {
+    color: ${props => props.theme.colors.textBase};
+  }
+
+  &:hover,
+  &:active {
     > span,
     a {
       color: ${props => props.theme.colors.textTitle};
@@ -107,8 +115,6 @@ export const MenuItem = styled.li<ItemSelectedProps>`
       }
     }
   }
-
-  ${props => props.selected && itemSelectedStyle};
 
   @media (min-width: 501px) {
     display: flex;
@@ -166,4 +172,6 @@ export const MenuItem = styled.li<ItemSelectedProps>`
       }
     }
   }
+
+  ${props => props.selected && itemSelectedStyle};
 `;

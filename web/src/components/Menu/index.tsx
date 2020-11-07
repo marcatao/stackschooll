@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
+// import Link from "next/link";
+
+import { useRouter } from "next/router";
 
 import { MenuWrapper, MenuItems, MenuItem, ItemSelectedProps } from "./styles";
 
@@ -19,26 +21,29 @@ export interface MenuProps {
 }
 
 const Item: React.FC<MenuItemProps> = ({
-  name,
+  // name,
   title,
   selected,
   link,
   icon,
   onClick
 }): JSX.Element => {
+  const router = useRouter();
   const Icon = (): JSX.Element => <>{icon}</>;
 
   return (
     <MenuItem
       onClick={() => {
-        if (onClick) onClick();
+        if (onClick) {
+          onClick();
+        }
+
+        router.push(link);
       }}
       selected={selected}
     >
       <Icon />
-      <Label>
-        <Link href={""}>{title}</Link>
-      </Label>
+      <Label>{title}</Label>
     </MenuItem>
   );
 };
