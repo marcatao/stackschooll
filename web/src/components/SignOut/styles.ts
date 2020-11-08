@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
-export const SignOutStyle = styled.a`
+export const SignOutStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  // background: ${props => props.theme.colors.primaryDark};
 
   border-radius: 1rem;
 

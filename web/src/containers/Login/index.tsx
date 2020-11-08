@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 
 import {
   LoginPageContent,
@@ -21,27 +21,33 @@ import { CheckBoxField } from "../../components/CheckBoxField";
 import { Button } from "../../components/Button";
 
 import { UserLogin } from "../../model/login";
-import { api } from "../../services/api";
+// import { api } from "../../services/api";
+
+import { useAuth } from "../../contexts/auth";
 
 const Login = (): JSX.Element => {
-  const router = useRouter();
+  // const router = useRouter();
   const [login, setLogin] = useState<UserLogin>();
+
+  const { onLogin } = useAuth();
 
   const handleSubmitLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    try {
-      const response = await api.post<string>("api/login", {
-        ...login,
-        device_name: "device_name"
-      });
+    await onLogin(login);
 
-      if (response.data) {
-        await router.push("/dashboard");
-      }
-    } catch (error) {
-      alert(error);
-    }
+    // try {
+    //   const response = await api.post<string>("api/login", {
+    //     ...login,
+    //     device_name: "device_name"
+    //   });
+
+    //   if (response.data) {
+    //     await router.push("/dashboard");
+    //   }
+    // } catch (error) {
+    //   alert(error);
+    // }
   };
 
   return (

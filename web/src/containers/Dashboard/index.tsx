@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useRouter } from "next/router";
 
@@ -28,6 +28,8 @@ import UserParentSVG from "../../assets/images/icons/user-parent-svg.svg";
 import StudentSVG from "../../assets/images/icons/students-svg.svg";
 import HomeSVG from "../../assets/images/icons/home-icon-svg.svg";
 
+import { useAuth } from "../../contexts/auth";
+
 export const getTitleFromItems = (
   items: MenuItemProps[],
   target: string
@@ -49,10 +51,12 @@ const Dashboard: React.FC = ({ children }): JSX.Element => {
   const router = useRouter();
   const route = getRouteFromPathname(router.pathname);
 
+  const { onLogout } = useAuth();
+
   const [items] = useState<MenuItemProps[]>([
     {
       name: "home",
-      title: "Inicío",
+      title: "início",
       link: "/dashboard",
       selected: true,
       icon: <HomeSVG />
@@ -81,6 +85,10 @@ const Dashboard: React.FC = ({ children }): JSX.Element => {
     }
   ]);
 
+  useEffect(() => {
+    router.push("/dashboard");
+  }, []);
+
   const title = getTitleFromItems(items, route);
 
   return (
@@ -96,7 +104,7 @@ const Dashboard: React.FC = ({ children }): JSX.Element => {
 
       <ProfileWrapper>
         <Avatar name="Anderson Gomes" />
-        <SignOut />
+        <SignOut onClick={onLogout} />
       </ProfileWrapper>
 
       <SideWrapper>
