@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { useRouter } from "next/router";
 
@@ -51,17 +51,16 @@ const Dashboard: React.FC = ({ children }): JSX.Element => {
   const router = useRouter();
   const route = getRouteFromPathname(router.pathname);
 
-  const { onLogout } = useAuth();
+  const { onLogout, user } = useAuth();
 
   const [items] = useState<MenuItemProps[]>([
     {
       name: "home",
-      title: "início",
+      title: "Início",
       link: "/dashboard",
       selected: true,
       icon: <HomeSVG />
     },
-
     {
       name: "notifications",
       title: "Notificações",
@@ -85,10 +84,6 @@ const Dashboard: React.FC = ({ children }): JSX.Element => {
     }
   ]);
 
-  useEffect(() => {
-    router.push("/dashboard");
-  }, []);
-
   const title = getTitleFromItems(items, route);
 
   return (
@@ -103,7 +98,7 @@ const Dashboard: React.FC = ({ children }): JSX.Element => {
       </HeaderWrapper>
 
       <ProfileWrapper>
-        <Avatar name="Anderson Gomes" />
+        <Avatar name={user.name} />
         <SignOut onClick={onLogout} />
       </ProfileWrapper>
 

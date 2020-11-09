@@ -2,8 +2,14 @@ import React from "react";
 
 import { Title } from "../../components/Title";
 
-const Index = (): JSX.Element => {
-  return <Title>Bem Vindo</Title>;
+import { HomeWrapper } from "./styles";
+
+const Home = (): JSX.Element => {
+  return (
+    <HomeWrapper>
+      <Title>Bem Vindo</Title>
+    </HomeWrapper>
+  );
 };
 
-export default Index;
+export default Home;
