@@ -34,7 +34,7 @@ export const AuthProvider: React.FC = ({ children }) => {
           setUser(user);
         }
       } else {
-        router.push("/");
+        await router.push("/");
       }
 
       setLoading(false);
@@ -52,11 +52,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     });
 
     if (token) {
-      console.log("Got token");
       Cookies.set("token", token, { expires: 60 });
-
       window.location.pathname = "/dashboard";
-
       api.defaults.headers.Authorization = `Bearer ${token}`;
 
       const { data: user } = await api.get("api/profile");
@@ -95,9 +92,19 @@ export const useAuth = (): Partial<Session> => useContext(AuthContext);
 export const ProtectRoute: React.FC = ({ children }): JSX.Element => {
   const { isAuthenticated, loading } = useAuth();
 
-  if (loading || (!isAuthenticated && window.location.pathname !== "/")) {
-    // return <LoadingScreen />;
+  if (loading) {
     return <span>Loading ...</span>;
+  }
+
+  if (!isAuthenticated) {
+    if (
+      window.location.pathname !== "/" &&
+      window.location.pathname !== "/recovery" &&
+      window.location.pathname !== "/register"
+    ) {
+      // return <LoadingScreen />;
+      return <span>Loading ...</span>;
+    }
   }
 
   return <>{children}</>;

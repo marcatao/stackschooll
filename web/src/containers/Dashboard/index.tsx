@@ -28,7 +28,8 @@ import UserParentSVG from "../../assets/images/icons/user-parent-svg.svg";
 import StudentSVG from "../../assets/images/icons/students-svg.svg";
 import HomeSVG from "../../assets/images/icons/home-icon-svg.svg";
 
-import { useAuth } from "../../contexts/auth";
+import { useAuth, ProtectRoute } from "../../contexts/auth";
+// import { ProtectedRoute } from "../../contexts/protectedRoute";
 
 export const getTitleFromItems = (
   items: MenuItemProps[],
@@ -98,7 +99,7 @@ const Dashboard: React.FC = ({ children }): JSX.Element => {
       </HeaderWrapper>
 
       <ProfileWrapper>
-        <Avatar name={user.name} />
+        <Avatar name="Anderson Gomes" />
         <SignOut onClick={onLogout} />
       </ProfileWrapper>
 
@@ -115,4 +116,4 @@ const Dashboard: React.FC = ({ children }): JSX.Element => {
   );
 };
 
-export { Dashboard };
+export default Dashboard;

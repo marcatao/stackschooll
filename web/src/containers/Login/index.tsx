@@ -21,8 +21,7 @@ import { CheckBoxField } from "../../components/CheckBoxField";
 import { Button } from "../../components/Button";
 
 import { UserLogin } from "../../model/login";
-// import { api } from "../../services/api";
-
+// import { onLogin } from "../../services/login";
 import { useAuth } from "../../contexts/auth";
 
 const Login = (): JSX.Element => {
@@ -35,19 +34,6 @@ const Login = (): JSX.Element => {
     e.preventDefault();
 
     await onLogin(login);
-
-    // try {
-    //   const response = await api.post<string>("api/login", {
-    //     ...login,
-    //     device_name: "device_name"
-    //   });
-
-    //   if (response.data) {
-    //     await router.push("/dashboard");
-    //   }
-    // } catch (error) {
-    //   alert(error);
-    // }
   };
 
   return (
