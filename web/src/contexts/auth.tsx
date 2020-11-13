@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import { api } from "../services/api";
 import { UserLogin } from "../model/login";
 
+import Loading from "../containers/Loading";
+
 type Session = {
   isAuthenticated: boolean;
   user: any;
@@ -93,7 +95,7 @@ export const ProtectRoute: React.FC = ({ children }): JSX.Element => {
   const { isAuthenticated, loading } = useAuth();
 
   if (loading) {
-    return <span>Loading ...</span>;
+    return <Loading />;
   }
 
   if (!isAuthenticated) {
@@ -102,8 +104,7 @@ export const ProtectRoute: React.FC = ({ children }): JSX.Element => {
       window.location.pathname !== "/recovery" &&
       window.location.pathname !== "/register"
     ) {
-      // return <LoadingScreen />;
-      return <span>Loading ...</span>;
+      return <Loading />;
     }
   }
 
