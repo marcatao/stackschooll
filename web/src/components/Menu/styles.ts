@@ -149,6 +149,8 @@ export const MenuItem = styled.li<ItemSelectedProps>`
     justify-content: flex-start;
     align-items: center;
 
+    height: 64px;
+
     padding-left: 1rem;
 
     > svg {

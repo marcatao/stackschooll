@@ -42,7 +42,7 @@ export const Label = styled.label`
   }
 `;
 
-export const InputWrapper = styled.div`
+export const MaskWrapper = styled.div`
   position: relative;
 
   max-width: 500px;

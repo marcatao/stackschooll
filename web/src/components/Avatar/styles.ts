@@ -9,6 +9,38 @@ export const AvatarWrapper = styled.div`
   max-width: 300px;
   max-height: 48px;
 
+  > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+
+    max-height: 48px;
+
+    min-width: 200px;
+    max-width: 300px;
+
+    padding-left: 1rem;
+
+    > span {
+      font-size: 1.66667rem;
+      line-height: 2.5rem;
+
+      color: ${props => props.theme.colors.titlePrimary};
+      width: 100%;
+
+      transition: color 0.2s;
+    }
+
+    > span + span {
+      font-size: 1.5rem;
+      line-height: 1.8rem;
+      color: ${props => props.theme.colors.textPrimary};
+    }
+  }
+
   > img {
     width: 40px;
     height: 40px;
@@ -19,14 +51,14 @@ export const AvatarWrapper = styled.div`
   }
 
   > svg {
-    width: 15%;
-    height: 15%;
-
     max-width: 45px;
     max-height: 45px;
 
     min-width: 32px;
     min-height: 32px;
+
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
 
     > path {
       fill: ${props => props.theme.colors.titlePrimary};
@@ -35,20 +67,12 @@ export const AvatarWrapper = styled.div`
     }
   }
 
-  > span {
-    font-size: 1.4rem;
-    line-height: 3.1rem;
-    color: ${props => props.theme.colors.titlePrimary};
-
-    margin: 1rem 1rem;
-
-    transition: color 0.2s;
-  }
-
   &:hover {
-    > span,
-    a {
-      color: ${props => props.theme.colors.textPrimary};
+    > div {
+      > span,
+      a {
+        color: ${props => props.theme.colors.textPrimary};
+      }
     }
 
     > svg {

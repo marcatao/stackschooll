@@ -28,7 +28,6 @@ export const AuthProvider: React.FC = ({ children }) => {
       const token = Cookies.get("token");
 
       if (token) {
-        console.log("Token is load");
         api.defaults.headers.Authorization = `Bearer ${token}`;
 
         const { data: user } = await api.get("api/profile");
@@ -60,7 +59,6 @@ export const AuthProvider: React.FC = ({ children }) => {
 
       const { data: user } = await api.get("api/profile");
       setUser(user);
-      console.log("Got user ", user);
     }
 
     setLoading(false);

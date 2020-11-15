@@ -29,7 +29,6 @@ import StudentSVG from "../../assets/images/icons/students-svg.svg";
 import HomeSVG from "../../assets/images/icons/home-icon-svg.svg";
 
 import { useAuth, ProtectRoute } from "../../contexts/auth";
-// import { ProtectedRoute } from "../../contexts/protectedRoute";
 
 export const getTitleFromItems = (
   items: MenuItemProps[],
@@ -50,8 +49,7 @@ export const getTitleFromItems = (
 
 const Dashboard: React.FC = ({ children }): JSX.Element => {
   const router = useRouter();
-  const route = getRouteFromPathname(router.pathname);
-
+  const [title, setTitle] = useState<string>("");
   const { onLogout, user } = useAuth();
 
   const [items] = useState<MenuItemProps[]>([
@@ -85,7 +83,10 @@ const Dashboard: React.FC = ({ children }): JSX.Element => {
     }
   ]);
 
-  const title = getTitleFromItems(items, route);
+  const goProfile = () => {
+    router.push("/dashboard/profile");
+    setTitle("Meu Perfil");
+  };
 
   return (
     <DashaboardPageContent>
@@ -99,12 +100,12 @@ const Dashboard: React.FC = ({ children }): JSX.Element => {
       </HeaderWrapper>
 
       <ProfileWrapper>
-        <Avatar name="Anderson Gomes" />
-        <SignOut onClick={onLogout} />
+        <Avatar name={user.name} profile="Escola" onClick={goProfile} />
+        <SignOut title="Deslogar" onClick={onLogout} />
       </ProfileWrapper>
 
       <SideWrapper>
-        <Menu items={items} />
+        <Menu items={items} onSelected={item => setTitle(item.title)} />
       </SideWrapper>
 
       <MainWrapper>

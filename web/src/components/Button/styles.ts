@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const ButtonStyle = styled.button`
   width: 100%;
-  height: 5.85rem;
+  max-width: 500px;
 
+  height: 5.85rem;
   min-height: 5.85rem;
 
   border-radius: 0.8rem;

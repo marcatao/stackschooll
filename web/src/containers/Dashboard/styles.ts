@@ -138,6 +138,18 @@ export const ProfileWrapper = styled.div`
   );
 
   box-shadow: 5px 1px 5px ${props => props.theme.colors.primary};
+
+  @media (min-width: 1100px) {
+    grid-area: Prof;
+
+    display: flex;
+
+    > span {
+      color: ${props => props.theme.colors.textPrimary};
+
+      margin-top: 0.8rem;
+    }
+  }
 `;
 
 export const SideWrapper = styled.aside`
@@ -155,6 +167,10 @@ export const MainWrapper = styled.main`
   justify-content: flex-start;
 
   padding: 5rem 1rem 0 2rem;
+
+  > section {
+    border-radius: 0.5rem;
+  }
 
   > span {
     margin-bottom: 1rem;

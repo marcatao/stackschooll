@@ -6,12 +6,14 @@ import { SignOutStyle } from "./styles";
 
 interface SignOutProps {
   onClick: () => void;
+  title?: string;
 }
 
-const SignOut: React.FC<SignOutProps> = ({ onClick }): JSX.Element => {
+const SignOut: React.FC<SignOutProps> = ({ title, onClick }): JSX.Element => {
   return (
     <SignOutStyle onClick={onClick}>
       <SignOutIcon />
+      <span>{title}</span>
     </SignOutStyle>
   );
 };
