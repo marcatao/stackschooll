@@ -90,6 +90,6 @@ export const ContentSection = styled.section`
 
     max-height: 600px;
 
-    padding: 5rem 10rem 5rem 10rem;
+    padding: 2rem 10rem 5rem 10rem;
   }
 `;

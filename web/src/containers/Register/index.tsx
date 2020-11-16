@@ -29,11 +29,12 @@ const Register: React.FC = (): JSX.Element => {
   const [userProfile, setProfile] = useState<Profile>({
     name: "",
     email: "",
+    username: "",
     password: "",
     profile: "escola",
-    cpfcnpj: "111.111.999-55",
-    username: "",
-    address: "Rua: Almada,588 jardim santo alberto Santo andré"
+    cpfcnpj: "99.999.999/9999-99",
+    address: "Rua: Almada,588 jardim santo alberto Santo andré",
+    profilePhotoUrl: ""
   });
 
   const handleSubmitRegister = async (e: React.FormEvent<HTMLFormElement>) => {

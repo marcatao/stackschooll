@@ -6,4 +6,5 @@ export class Profile extends Users {
   cpfcnpj: string;
   username: string;
   address: string;
+  profilePhotoUrl: string;
 }

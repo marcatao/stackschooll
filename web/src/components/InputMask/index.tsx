@@ -9,6 +9,7 @@ export interface InputProps
     MaskProps {
   label: string;
   name: string;
+  defaultValue: string;
   icon?: JSX.Element;
 }
 
@@ -18,13 +19,14 @@ const InputMask: React.FC<InputProps> = ({
   icon,
   mask,
   maskChar,
+  defaultValue,
   ...rest
 }): JSX.Element => {
   const Icon = (): JSX.Element => <>{icon}</>;
 
   return (
     <MaskWrapper>
-      <Mask mask={mask} maskChar={maskChar}>
+      <Mask defaultValue={defaultValue} mask={mask} maskChar={maskChar}>
         {rest => <Input type="text" id={name} name={name} required {...rest} />}
       </Mask>
 

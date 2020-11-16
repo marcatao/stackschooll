@@ -7,7 +7,7 @@ import { api } from "../services/api";
 import { UserLogin } from "../model/login";
 
 export const onLogin = async (login: UserLogin): Promise<string | void> => {
-  const { data: token } = await api.post("api/login", {
+  const { data: token } = await api.post<string>("api/login", {
     ...login,
     device_name: "device_name"
   });

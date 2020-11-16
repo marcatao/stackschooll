@@ -6,10 +6,11 @@ import { api } from "../services/api";
 import { UserLogin } from "../model/login";
 
 import Loading from "../containers/Loading";
+import { Profile } from "../model/profile";
 
 type Session = {
   isAuthenticated: boolean;
-  user: any;
+  user: Profile;
   loading: boolean;
   onLogin: (login: UserLogin) => Promise<void>;
   onLogout: () => void;
@@ -18,7 +19,7 @@ type Session = {
 const AuthContext = createContext<Partial<Session>>({});
 
 export const AuthProvider: React.FC = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<Profile>(null);
   const [loading, setLoading] = useState(true);
 
   const router = useRouter();
@@ -32,7 +33,14 @@ export const AuthProvider: React.FC = ({ children }) => {
 
         const { data: user } = await api.get("api/profile");
         if (user) {
-          setUser(user);
+          const {
+            cpf_cnpj: cpfcnpj,
+            user_name: username,
+            profile_photo_url: profilePhotoUrl,
+            ...rest
+          } = user;
+
+          setUser({ ...rest, cpfcnpj, username, profilePhotoUrl });
         }
       } else {
         await router.push("/");
