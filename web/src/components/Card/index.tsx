@@ -6,6 +6,8 @@ import { Title } from "../../components/Title";
 
 import { CardWrapper, StatusHourWrapper } from "./styles";
 
+import ClockIcon from "../../assets/images/icons/clock-icon-svg.svg";
+
 export interface CardProps {
   parent: string;
   student: string;
@@ -25,7 +27,11 @@ const Card: React.FC<CardProps> = ({
       <Avatar name={student} image={studentImage} />
 
       <StatusHourWrapper>
-        <Title>12:00</Title>
+        <div>
+          <ClockIcon />
+          <Title>12:00</Title>
+        </div>
+
         <Label>Esperando</Label>
       </StatusHourWrapper>
     </CardWrapper>

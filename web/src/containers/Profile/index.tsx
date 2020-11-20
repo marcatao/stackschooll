@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, createRef } from "react";
+import Dropzone, { DropzoneRef } from "react-dropzone";
+
 import { FormSection, ContentSection, ProfileWrapper } from "./styles";
 
 import { Label } from "../../components/Label";
@@ -30,16 +32,43 @@ const ProfileForm = (): JSX.Element => {
     e.preventDefault();
   };
 
+  const dropzoneRef = createRef<DropzoneRef>();
+
   return (
     <ProfileWrapper>
       <FormSection onSubmit={handleSubmitRegister}>
         <ContentSection>
           <div>
             <Label>Seus dados</Label>
+            <Dropzone
+              ref={dropzoneRef}
+              maxFiles={1}
+              accept={"image/*"}
+              onDrop={acceptedFiles => {
+                const image = acceptedFiles.map(file =>
+                  Object.assign(file, {
+                    preview: URL.createObjectURL(file)
+                  })
+                );
+
+                setProfile({
+                  ...userProfile,
+                  profilePhotoUrl: image[0].preview
+                });
+              }}
+            >
+              {({ getRootProps, getInputProps }) => (
+                <div {...getRootProps()}>
+                  <input {...getInputProps()} />
+                </div>
+              )}
+            </Dropzone>
             <Avatar
               name={user.name}
               profile={user.profile}
               email={user.email}
+              image={user.profilePhotoUrl}
+              onClick={() => dropzoneRef.current.open()}
             />
           </div>
 

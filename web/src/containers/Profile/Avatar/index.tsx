@@ -20,15 +20,16 @@ const Avatar: React.FC<AvatarProps> = ({
   email,
   onClick
 }): JSX.Element => {
+  console.log(image);
   return (
-    <AvatarWrapper onClick={onClick}>
+    <AvatarWrapper>
       {image ? <img src={image} /> : <AvatarSVG />}
       <AvatarInformation>
         <span>{name}</span>
         <span>{email}</span>
         <span>{profile}</span>
       </AvatarInformation>
-      <Camera />
+      <Camera onClick={onClick} />
     </AvatarWrapper>
   );
 };

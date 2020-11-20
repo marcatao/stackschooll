@@ -18,6 +18,7 @@ export const CardWrapper = styled.section`
   border-radius: 5px;
 
   margin: 1rem;
+  padding: 1rem;
 `;
 
 export const StatusHourWrapper = styled.div`
@@ -32,5 +33,28 @@ export const StatusHourWrapper = styled.div`
     align-items: center;
 
     color: ${props => props.theme.colors.titlePrimary};
+  }
+
+  > div {
+    display: flex;
+    align-items: center;
+
+    > svg {
+      width: 100%;
+      height: 100%;
+
+      padding-right: 1rem;
+
+      max-width: 32px;
+      max-height: 32px;
+
+      > path {
+        fill: ${props => props.theme.colors.lineWhite};
+      }
+    }
+
+    > span {
+      color: ${props => props.theme.colors.titlePrimary};
+    }
   }
 `;

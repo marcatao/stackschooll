@@ -28,7 +28,7 @@ import UserParentSVG from "../../assets/images/icons/user-parent-svg.svg";
 import StudentSVG from "../../assets/images/icons/students-svg.svg";
 import HomeSVG from "../../assets/images/icons/home-icon-svg.svg";
 
-import { useAuth, ProtectRoute } from "../../contexts/auth";
+import { useAuth } from "../../contexts/auth";
 
 export const getTitleFromItems = (
   items: MenuItemProps[],
@@ -100,8 +100,13 @@ const Dashboard: React.FC = ({ children }): JSX.Element => {
       </HeaderWrapper>
 
       <ProfileWrapper>
-        <Avatar name={user.name} profile="Escola" onClick={goProfile} />
-        <SignOut title="Deslogar" onClick={onLogout} />
+        <Avatar
+          name={user.name}
+          image={user.profilePhotoUrl}
+          profile={user.profile}
+          onClick={goProfile}
+        />
+        <SignOut title="Sair" onClick={onLogout} />
       </ProfileWrapper>
 
       <SideWrapper>

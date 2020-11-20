@@ -6,13 +6,16 @@ export const AvatarWrapper = styled.div`
 
   cursor: pointer;
 
+  width: 100%;
+  height: 100%;
+
   max-width: 300px;
   max-height: 48px;
 
   > div {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 
     width: 100%;
     height: 100%;
@@ -42,8 +45,11 @@ export const AvatarWrapper = styled.div`
   }
 
   > img {
-    width: 40px;
-    height: 40px;
+    width: 100%;
+    height: 100%;
+
+    max-width: 40px;
+    max-height: 40px;
 
     background: ${props => props.theme.colors.titlePrimary};
 

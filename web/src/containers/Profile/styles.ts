@@ -14,12 +14,12 @@ export const ProfileWrapper = styled.main`
 export const FormSection = styled.form`
   display: flex;
   justify-content: center;
-  align-items: center;
 
   width: 100%;
   height: 80%;
 
-  padding-top: 3rem;
+  padding-top: 2.5rem;
+
   border-top: 1px solid ${props => props.theme.colors.lineWhite};
 
   background: ${props => props.theme.colors.background};
@@ -70,10 +70,6 @@ export const ContentSection = styled.section`
     }
 
     > div + div > input {
-      border-radius: 0 0 0 0;
-    }
-
-    > div + div + div > input {
       border-radius: 0 0 0.8rem 0.8rem;
     }
   }
@@ -84,12 +80,14 @@ export const ContentSection = styled.section`
 
   @media (min-width: 1100px) {
     width: 100%;
+    height: 100%;
 
     min-width: 400px;
     max-width: 800px;
 
-    max-height: 600px;
+    min-height: 400px;
+    max-height: 500px;
 
-    padding: 2rem 10rem 5rem 10rem;
+    padding: 2rem 10rem 2rem 10rem;
   }
 `;

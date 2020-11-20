@@ -14,10 +14,11 @@ export const Wrapper = styled.div`
 
   width: 100%;
   height: 100%;
+  transition: background 0.2s;
 
   cursor: pointer;
 
-  svg {
+  > svg {
     width: 100%;
     height: 100%;
 
@@ -30,6 +31,18 @@ export const Wrapper = styled.div`
     > path {
       fill: ${props => props.theme.colors.titlePrimary};
 
+      transition: fill 0.2s;
+    }
+  }
+
+  &:hover {
+    background: ${props => props.theme.colors.secondaryDark};
+    transition: background 0.2s;
+  }
+
+  > svg {
+    > path {
+      fill: ${props => props.theme.colors.inputBackground};
       transition: fill 0.2s;
     }
   }
