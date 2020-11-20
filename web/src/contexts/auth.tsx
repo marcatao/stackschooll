@@ -14,6 +14,7 @@ type Session = {
   loading: boolean;
   onLogin: (login: UserLogin) => Promise<void>;
   onLogout: () => void;
+  onShowLoading: (value: boolean) => void;
 };
 
 const AuthContext = createContext<Partial<Session>>({});
@@ -52,6 +53,10 @@ export const AuthProvider: React.FC = ({ children }) => {
     loadUserFromCookies();
   }, []);
 
+  const onShowLoading = (value: boolean) => {
+    setLoading(value);
+  };
+
   const onLogin = async (login: UserLogin) => {
     setLoading(true);
 
@@ -87,7 +92,8 @@ export const AuthProvider: React.FC = ({ children }) => {
         user,
         onLogin,
         loading,
-        onLogout
+        onLogout,
+        onShowLoading
       }}
     >
       {children}
@@ -108,7 +114,8 @@ export const ProtectRoute: React.FC = ({ children }): JSX.Element => {
     if (
       window.location.pathname !== "/" &&
       window.location.pathname !== "/recovery" &&
-      window.location.pathname !== "/register"
+      window.location.pathname !== "/register" &&
+      window.location.pathname !== "/success"
     ) {
       return <Loading />;
     }

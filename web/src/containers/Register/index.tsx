@@ -23,9 +23,11 @@ import { BackTo } from "../../components/BackTo";
 
 import { Profile } from "../../model/profile";
 import { api } from "../../services/api";
+import { useAuth } from "../../contexts/auth";
 
 const Register: React.FC = (): JSX.Element => {
   const router = useRouter();
+  const { onShowLoading } = useAuth();
   const [userProfile, setProfile] = useState<Profile>({
     name: "",
     email: "",
@@ -41,6 +43,8 @@ const Register: React.FC = (): JSX.Element => {
     e.preventDefault();
 
     try {
+      onShowLoading(true);
+
       const {
         name,
         email,
@@ -70,7 +74,10 @@ const Register: React.FC = (): JSX.Element => {
       if (response.data) {
         await router.push("/success");
       }
+
+      onShowLoading(false);
     } catch (error) {
+      onShowLoading(false);
       alert(error);
     }
   };
