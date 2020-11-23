@@ -8,6 +8,8 @@ export const MenuWrapper = styled.menu`
   display: flex;
 
   width: 100%;
+  min-width: 128px;
+
   height: 100%;
 `;
 

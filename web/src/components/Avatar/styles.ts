@@ -22,7 +22,7 @@ export const AvatarWrapper = styled.div`
 
     max-height: 48px;
 
-    min-width: 200px;
+    min-width: calc(100% - 45px);
     max-width: 300px;
 
     padding-left: 1rem;

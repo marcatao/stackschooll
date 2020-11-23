@@ -16,6 +16,8 @@ export const FormSection = styled.form`
   justify-content: center;
 
   width: 100%;
+  min-width: 500px;
+
   height: 80%;
 
   padding-top: 2.5rem;
@@ -23,6 +25,10 @@ export const FormSection = styled.form`
   border-top: 1px solid ${props => props.theme.colors.lineWhite};
 
   background: ${props => props.theme.colors.background};
+
+  @media (min-width: 501px) {
+    height: 100%;
+  }
 
   @media (min-width: 1100px) {
     width: 100%;
@@ -36,6 +42,7 @@ export const ContentSection = styled.section`
 
   width: 100%;
   max-width: 500px;
+  min-width: 500px;
 
   height: 100%;
 
@@ -76,6 +83,22 @@ export const ContentSection = styled.section`
 
   > div > span + span > span {
     color: ${props => props.theme.colors.textBase};
+  }
+
+  @media (min-width: 501px) {
+    width: 100%;
+    height: 100%;
+
+    max-width: calc(100vw - 128px);
+
+    min-height: 400px;
+    max-height: 500px;
+
+    padding: 2rem 5rem 2rem 5rem;
+  }
+
+  @media (min-width: 700px) {
+    padding: 2rem 5rem 2rem 10rem;
   }
 
   @media (min-width: 1100px) {

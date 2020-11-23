@@ -7,21 +7,26 @@ import { MenuWrapper, MenuItems, MenuItem, ItemSelectedProps } from "./styles";
 
 import { Label } from "../Label";
 
+export enum AllowItem {
+  "responsavel",
+  "escola"
+}
+
 export interface MenuItemProps extends ItemSelectedProps {
   name: string;
   title: string;
   link?: string;
   icon?: JSX.Element;
+  authorization: AllowItem[];
   onClick?: () => void;
 }
 
 export interface MenuProps {
-  items: MenuItemProps[];
+  items?: MenuItemProps[];
   onSelected?: (item: MenuItemProps) => void;
 }
 
 const Item: React.FC<MenuItemProps> = ({
-  // name,
   title,
   selected,
   link,
@@ -73,7 +78,7 @@ const Menu: React.FC<MenuProps> = ({ items, onSelected }): JSX.Element => {
       // get last item selected
       onSelected(lastItemSelected[0]);
     }
-  }, [menu.items]);
+  }, [menu.items, items]);
 
   return (
     <MenuWrapper>

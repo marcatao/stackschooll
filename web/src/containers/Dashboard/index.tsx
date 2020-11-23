@@ -23,11 +23,6 @@ import { getRouteFromPathname } from "../../utils";
 import LogoStackSchoolSVG from "../../assets/images/logostackschool.svg";
 import LogoSVG from "../../assets/images/stackschool.svg";
 
-import CheckNotificationSVG from "../../assets/images/icons/check-notification-svg.svg";
-import UserParentSVG from "../../assets/images/icons/user-parent-svg.svg";
-import StudentSVG from "../../assets/images/icons/students-svg.svg";
-import HomeSVG from "../../assets/images/icons/home-icon-svg.svg";
-
 import { useAuth } from "../../contexts/auth";
 
 export const getTitleFromItems = (
@@ -50,38 +45,7 @@ export const getTitleFromItems = (
 const Dashboard: React.FC = ({ children }): JSX.Element => {
   const router = useRouter();
   const [title, setTitle] = useState<string>("");
-  const { onLogout, user } = useAuth();
-
-  const [items] = useState<MenuItemProps[]>([
-    {
-      name: "home",
-      title: "Início",
-      link: "/dashboard",
-      selected: true,
-      icon: <HomeSVG />
-    },
-    {
-      name: "notifications",
-      title: "Notificações",
-      link: "/dashboard/notifications",
-      selected: false,
-      icon: <CheckNotificationSVG />
-    },
-    {
-      name: "parents",
-      title: "Responsáveis",
-      link: "/dashboard/parents",
-      selected: false,
-      icon: <UserParentSVG />
-    },
-    {
-      name: "students",
-      title: "Alunos",
-      link: "/dashboard/students",
-      selected: false,
-      icon: <StudentSVG />
-    }
-  ]);
+  const { onLogout, user, menu } = useAuth();
 
   const goProfile = () => {
     router.push("/dashboard/profile");
@@ -110,7 +74,7 @@ const Dashboard: React.FC = ({ children }): JSX.Element => {
       </ProfileWrapper>
 
       <SideWrapper>
-        <Menu items={items} onSelected={item => setTitle(item.title)} />
+        <Menu items={menu} onSelected={item => setTitle(item.title)} />
       </SideWrapper>
 
       <MainWrapper>

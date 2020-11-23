@@ -23,8 +23,8 @@ const Card: React.FC<CardProps> = ({
 }): JSX.Element => {
   return (
     <CardWrapper>
-      <Avatar name={parent} image={parentImage} />
-      <Avatar name={student} image={studentImage} />
+      <Avatar name={parent} image={parentImage} profile="Responsável" />
+      <Avatar name={student} image={studentImage} profile="Aluno" />
 
       <StatusHourWrapper>
         <div>

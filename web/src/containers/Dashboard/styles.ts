@@ -77,6 +77,8 @@ export const HeaderWrapper = styled.header`
 
   padding-left: 2rem;
 
+  width: 100%;
+
   > svg {
     width: 100%;
     height: 100%;
@@ -180,6 +182,7 @@ export const MainWrapper = styled.main`
     grid-area: Main;
 
     width: calc(100vw - 128px);
+    min-width: 500px;
   }
 
   @media (min-width: 1100px) {
