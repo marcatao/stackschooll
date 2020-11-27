@@ -1,12 +1,14 @@
 import React from "react";
 
 import { ParentWrapper } from "./styles";
-import { Title } from "../../../components/Title";
+import { List } from "../../../components/List";
 
 const Parents = (): JSX.Element => {
+  const parents = ["Responsável 1", "Responsável 2"];
+
   return (
     <ParentWrapper>
-      <Title>Lista / Cadastro de Responsáveis</Title>
+      <List title="Nome do Responsável" items={parents} />
     </ParentWrapper>
   );
 };

@@ -23,6 +23,7 @@ type Session = {
   onLogin: (login: UserLogin) => Promise<void>;
   onLogout: () => void;
   onShowLoading: (value: boolean) => void;
+  onSetMenu: (menu: MenuItemProps[]) => void;
 };
 
 const AuthContext = createContext<Partial<Session>>({});
@@ -50,8 +51,6 @@ export const AuthProvider: React.FC = ({ children }) => {
             ...rest
           } = user;
 
-          onLoadMenu(user.profile);
-
           setUser({ ...rest, cpfcnpj, username, profilePhotoUrl });
         }
       } else {
@@ -63,6 +62,12 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     loadUserFromCookies();
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      onLoadMenu(user.profile);
+    }
+  }, [user]);
 
   const onLoadMenu = (profile: string): void => {
     const items: MenuItemProps[] = [
@@ -111,6 +116,10 @@ export const AuthProvider: React.FC = ({ children }) => {
     setLoading(value);
   };
 
+  const onSetMenu = (value: MenuItemProps[]) => {
+    setMenu(value);
+  };
+
   const onLogin = async (login: UserLogin) => {
     setLoading(true);
 
@@ -151,6 +160,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         isAuthenticated: !!user,
         user,
         menu,
+        onSetMenu,
         onLogin,
         loading,
         onLogout,

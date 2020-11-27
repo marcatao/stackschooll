@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const ProfileWrapper = styled.main`
-  width: 100%;
-  height: 100%;
-
   display: flex;
   justify-content: center;
+
+  width: 100%;
+  height: 100%;
 
   color: ${props => props.theme.colors.textPrimary};
   background: ${props => props.theme.colors.primary};
@@ -16,9 +16,9 @@ export const FormSection = styled.form`
   justify-content: center;
 
   width: 100%;
-  min-width: 500px;
+  min-width: 400px;
 
-  height: 80%;
+  height: 100%;
 
   padding-top: 2.5rem;
 
@@ -41,14 +41,15 @@ export const ContentSection = styled.section`
   flex-direction: column;
 
   width: 100%;
-  max-width: 500px;
-  min-width: 500px;
+  min-width: 400px;
 
   height: 100%;
 
   background: ${props => props.theme.colors.boxBase};
 
   border-radius: 0.5rem;
+
+  padding: 2rem 5rem 2rem 5rem;
 
   > div {
     display: flex;

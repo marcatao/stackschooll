@@ -46,16 +46,19 @@ const itemSelectedStyle = css`
   background: ${props => props.theme.colors.background};
 
   > span {
-    color: ${props => props.theme.colors.textTitle};
+    // color: ${props => props.theme.colors.textTitle};
+    color: ${props => props.theme.colors.primary};
   }
 
   > span > a {
-    color: ${props => props.theme.colors.textTitle};
+    // color: ${props => props.theme.colors.textTitle};
+    color: ${props => props.theme.colors.primary};
   }
 
   > svg {
     > path {
-      fill: ${props => props.theme.colors.textTitle};
+      // fill: ${props => props.theme.colors.textTitle};
+      fill: ${props => props.theme.colors.primary};
     }
   }
 `;
@@ -108,12 +111,14 @@ export const MenuItem = styled.li<ItemSelectedProps>`
   &:active {
     > span,
     a {
-      color: ${props => props.theme.colors.textTitle};
+      // color: ${props => props.theme.colors.textTitle};
+      color: ${props => props.theme.colors.primary};
     }
 
     > svg {
       > path {
-        fill: ${props => props.theme.colors.textTitle};
+        // fill: ${props => props.theme.colors.textTitle};
+        fill: ${props => props.theme.colors.primary};
       }
     }
   }

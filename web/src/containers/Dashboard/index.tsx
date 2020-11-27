@@ -15,6 +15,7 @@ import { SignOut } from "../../components/SignOut";
 import { Avatar } from "../../components/Avatar";
 import { Label } from "../../components/Label";
 import { Title } from "../../components/Title";
+// import PageTitle from "../../components/PageTitle";
 
 import { Menu, MenuItemProps } from "../../components/Menu";
 
@@ -45,7 +46,7 @@ export const getTitleFromItems = (
 const Dashboard: React.FC = ({ children }): JSX.Element => {
   const router = useRouter();
   const [title, setTitle] = useState<string>("");
-  const { onLogout, user, menu } = useAuth();
+  const { onLogout, user, menu, onSetMenu } = useAuth();
 
   const goProfile = () => {
     router.push("/dashboard/profile");
@@ -74,7 +75,13 @@ const Dashboard: React.FC = ({ children }): JSX.Element => {
       </ProfileWrapper>
 
       <SideWrapper>
-        <Menu items={menu} onSelected={item => setTitle(item.title)} />
+        <Menu
+          items={menu}
+          onSelected={(item, items) => {
+            setTitle(item.title);
+            onSetMenu(items);
+          }}
+        />
       </SideWrapper>
 
       <MainWrapper>

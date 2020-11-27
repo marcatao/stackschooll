@@ -1,5 +1,7 @@
 import React from "react";
+import Head from "next/head";
 import { AppProps } from "next/app";
+
 import { ThemeProvider } from "styled-components";
 
 import GlobalStyle from "../styles/global";
@@ -14,6 +16,9 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }): JSX.Element => {
     <ThemeProvider theme={theme}>
       <AuthProvider>
         <Layout>
+          <Head>
+            <title>StackSchool</title>
+          </Head>
           <Component {...pageProps} />
         </Layout>
       </AuthProvider>

@@ -23,7 +23,7 @@ export interface MenuItemProps extends ItemSelectedProps {
 
 export interface MenuProps {
   items?: MenuItemProps[];
-  onSelected?: (item: MenuItemProps) => void;
+  onSelected?: (item: MenuItemProps, items: MenuItemProps[]) => void;
 }
 
 const Item: React.FC<MenuItemProps> = ({
@@ -74,11 +74,10 @@ const Menu: React.FC<MenuProps> = ({ items, onSelected }): JSX.Element => {
   useEffect(() => {
     if (onSelected) {
       const lastItemSelected = menu.items.filter(item => item.selected);
-
       // get last item selected
-      onSelected(lastItemSelected[0]);
+      onSelected(lastItemSelected[0], menu.items);
     }
-  }, [menu.items, items]);
+  }, [menu.items]);
 
   return (
     <MenuWrapper>

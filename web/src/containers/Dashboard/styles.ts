@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const DashaboardPageContent = styled.div`
   width: 100vw;
-  // width: 100%;
   height: 100vh;
 
   color: ${props => props.theme.colors.textPrimary};
@@ -162,13 +161,21 @@ export const SideWrapper = styled.aside`
 `;
 
 export const MainWrapper = styled.main`
+  grid-area: Main;
   background: ${props => props.theme.colors.background};
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 
-  padding: 5rem 1rem 0 2rem;
+  width: 100%;
+  min-width: 400px;
+
+  height: 100%;
+
+  padding: 1rem 1rem 0 1rem;
+
+  overflow-y: auto;
 
   > section {
     border-radius: 0.5rem;
@@ -180,6 +187,8 @@ export const MainWrapper = styled.main`
 
   @media (min-width: 501px) {
     grid-area: Main;
+
+    padding: 5rem 1rem 0 2rem;
 
     width: calc(100vw - 128px);
     min-width: 500px;

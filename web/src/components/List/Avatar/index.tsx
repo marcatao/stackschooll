@@ -3,8 +3,6 @@ import React from "react";
 import { AvatarWrapper, AvatarInformation } from "./styles";
 import AvatarSVG from "../../../assets/images/icons/avatar-icon-svg.svg";
 
-import { Camera } from "../Camera";
-
 export interface AvatarProps {
   image?: string;
   name?: string;
@@ -22,13 +20,10 @@ const Avatar: React.FC<AvatarProps> = ({
 }): JSX.Element => {
   return (
     <AvatarWrapper>
-      {image ? <img src={image} /> : <AvatarSVG />}
+      {image !== undefined ? <img src={image} /> : <AvatarSVG />}
       <AvatarInformation>
         <span>{name}</span>
-        <span>{email}</span>
-        <span>{profile}</span>
       </AvatarInformation>
-      <Camera onClick={onClick} />
     </AvatarWrapper>
   );
 };
