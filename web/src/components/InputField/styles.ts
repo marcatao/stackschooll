@@ -45,7 +45,9 @@ export const Label = styled.label`
 export const InputWrapper = styled.div`
   position: relative;
 
+  width: 100%;
   max-width: 500px;
+  min-width: 400px;
 
   > div > svg {
     width: 2.5rem;
