@@ -18,12 +18,11 @@ export const AvatarWrapper = styled.div`
     justify-content: center;
 
     width: 100%;
-    height: 100%;
-
-    max-height: 48px;
-
     min-width: calc(100% - 45px);
     max-width: 300px;
+
+    height: 100%;
+    max-height: 48px;
 
     padding-left: 1rem;
 
@@ -38,7 +37,7 @@ export const AvatarWrapper = styled.div`
     }
 
     > span + span {
-      font-size: 1.5rem;
+      font-size: 1.458333333333333rem;
       line-height: 1.8rem;
       color: ${props => props.theme.colors.textPrimary};
     }
@@ -46,9 +45,9 @@ export const AvatarWrapper = styled.div`
 
   > img {
     width: 100%;
-    height: 100%;
-
     max-width: 40px;
+
+    height: 100%;
     max-height: 40px;
 
     background: ${props => props.theme.colors.titlePrimary};
@@ -88,7 +87,7 @@ export const AvatarWrapper = styled.div`
     }
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 501px) {
     justify-content: center;
   }
 `;

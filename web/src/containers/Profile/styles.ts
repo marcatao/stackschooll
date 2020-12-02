@@ -56,6 +56,7 @@ export const ContentSection = styled.section`
     flex-direction: column;
 
     width: 100%;
+    max-width: 500px;
     margin-bottom: 2rem;
 
     > span + span {

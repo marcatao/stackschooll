@@ -64,36 +64,47 @@ export const AvatarInformation = styled.div`
   justify-content: center;
 
   width: 100%;
-  height: 100%;
-
-  max-height: 100px;
-
   min-width: 200px;
   max-width: 300px;
+
+  height: 100%;
+  max-height: 100px;
 
   padding-left: 2rem;
 
   > span {
-    font-size: 1.66667rem;
+    font-size: 1.458333333333333rem;
     line-height: 2.5rem;
 
     color: ${props => props.theme.colors.textBase};
     width: 100%;
 
+    @media (min-width: 1100px) {
+      font-size: 1.66667rem;
+    }
+
     transition: color 0.2s;
   }
 
   > span + span {
-    font-size: 1.5rem;
+    font: 500 1.25rem Poppins;
     line-height: 2rem;
 
     color: ${props => props.theme.colors.textComplement};
+
+    @media (min-width: 1100px) {
+      font: 500 1.458333333333333rem Poppins;
+    }
   }
 
   > span + span + span {
-    font-size: 1.5rem;
+    font: 500 1.25rem Poppins;
     line-height: 2rem;
 
     color: ${props => props.theme.colors.textComplement};
+
+    @media (min-width: 1100px) {
+      font: 500 1.458333333333333rem Poppins;
+    }
   }
 `;

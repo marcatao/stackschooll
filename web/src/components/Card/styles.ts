@@ -27,6 +27,10 @@ export const StatusHourWrapper = styled.div`
 
   margin-top: 2rem;
 
+  border-top: 1px solid ${props => props.theme.colors.textPrimary};
+
+  padding-top: 1rem;
+
   > span {
     display: flex;
     justify-content: center;

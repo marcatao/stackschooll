@@ -5,8 +5,6 @@ export const AvatarWrapper = styled.div`
   align-items: center;
 
   width: 100%;
-
-  // max-width: 300px;
   max-height: 100px;
 
   padding: 0.5rem;
@@ -73,11 +71,15 @@ export const AvatarInformation = styled.div`
   padding-left: 2rem;
 
   > span {
-    font-size: 1.66667rem;
+    font-size: 1.25rem;
     line-height: 2.5rem;
 
     color: ${props => props.theme.colors.textBase};
     width: 100%;
+
+    @media (min-width: 1100px) {
+      font-size: 1.458333333333333rem;
+    }
 
     transition: color 0.2s;
   }

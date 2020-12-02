@@ -25,7 +25,7 @@ export const HeaderList = styled.header`
 
   > span {
     color: ${props => props.theme.colors.textBase};
-    font: 500 1.67rem Poppins;
+    font: 500 1.6666667rem Poppins;
 
     opacity: 0.8;
   }

@@ -1,30 +1,6 @@
 import styled from "styled-components";
 
-export const ParentWrapper = styled.main`
-  display: flex;
-  flex-direction: column;
-
-  background: ${props => props.theme.colors.boxBase};
-
-  width: 100%;
-  min-width: 450px;
-  height: 100%;
-
-  padding: 1rem;
-
-  > span {
-    height: auto;
-  }
-
-  @media (min-width: 501px) {
-    min-width: 550px;
-  }
-
-  @media (min-width: 1100px) {
-  }
-`;
-
-export const ParentHeader = styled.header`
+export const SearchAddWrapper = styled.section`
   display: flex;
   flex-direction: column;
 
