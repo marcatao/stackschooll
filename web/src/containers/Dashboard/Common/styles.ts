@@ -9,9 +9,17 @@ export const SearchAddWrapper = styled.section`
 
   margin: 0 1rem 1rem 0rem;
 
+  position: relative;
+
   > button {
     width: 128px;
+    height: 5rem;
+
     background: ${props => props.theme.colors.primary};
+
+    position: absolute;
+    right: 0;
+    top: 121px;
 
     margin: 0 0 0 1rem;
 
@@ -22,6 +30,12 @@ export const SearchAddWrapper = styled.section`
 
     @media (min-width: 501px) {
       width: 200px;
+
+      height: 100%;
+      max-height: 5.85rem;
+
+      position: relative;
+      top: 0;
     }
 
     @media (min-width: 1100px) {

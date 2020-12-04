@@ -6,7 +6,7 @@ import { HomeWrapper } from "./styles";
 const Home = (): JSX.Element => {
   return (
     <HomeWrapper>
-      <Title>Bem Vindo</Title>
+      <Title>Bem vindo</Title>
     </HomeWrapper>
   );
 };

@@ -84,7 +84,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         title: "Notificações",
         link: "/dashboard/notifications",
         selected: false,
-        authorization: [AllowItem.escola, AllowItem.responsavel],
+        authorization: [AllowItem.escola],
         icon: <CheckNotificationSVG />
       },
       {
@@ -100,7 +100,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         title: "Alunos",
         link: "/dashboard/students",
         selected: false,
-        authorization: [AllowItem.escola],
+        authorization: [AllowItem.escola, AllowItem.responsavel],
         icon: <StudentSVG />
       }
     ];

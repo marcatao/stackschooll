@@ -2,15 +2,30 @@ import React from "react";
 
 import { Title } from "../Title";
 import { Avatar } from "./Avatar";
+import { Button } from "../Button";
 
-import { ListWrapper, ItemsWrapper, HeaderList } from "./styles";
+import { ListWrapper, ItemsWrapper, HeaderList, Item } from "./styles";
 
 export interface ListProps {
   title: string;
   items?: string[];
+  show?: boolean;
 }
 
-const List: React.FC<ListProps> = ({ title, items }): JSX.Element => {
+interface ItemProps {
+  item: string;
+}
+
+const List: React.FC<ListProps> = ({ title, items, show }): JSX.Element => {
+  const ListItem: React.FC<ItemProps> = ({ item }) => {
+    return (
+      <Item>
+        <Avatar name={item} />
+        {show && <Button name="notification">Notificar Escola</Button>}
+      </Item>
+    );
+  };
+
   return (
     <ListWrapper>
       <HeaderList>
@@ -19,7 +34,7 @@ const List: React.FC<ListProps> = ({ title, items }): JSX.Element => {
 
       <ItemsWrapper>
         {items.map((item, i) => (
-          <Avatar key={i} name={item} />
+          <ListItem item={item} key={i} />
         ))}
       </ItemsWrapper>
     </ListWrapper>

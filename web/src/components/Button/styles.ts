@@ -6,7 +6,7 @@ export const ButtonStyle = styled.button`
   max-width: 500px;
 
   height: 5.85rem;
-  min-height: 5.85rem;
+  min-height: 5rem;
   max-height: 5.85rem;
 
   border-radius: 0.8rem;

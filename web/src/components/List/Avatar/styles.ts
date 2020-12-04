@@ -9,8 +9,6 @@ export const AvatarWrapper = styled.div`
 
   padding: 0.5rem;
 
-  border-bottom: 0.1rem solid ${props => props.theme.colors.background};
-
   > div + div {
     top: 50%;
     left: 18%;

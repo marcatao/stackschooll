@@ -39,3 +39,18 @@ export const ItemsWrapper = styled.section`
 
   border-top: 0.1rem solid ${props => props.theme.colors.background};
 `;
+
+export const Item = styled.div`
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+  max-height: 80px;
+
+  border-bottom: 0.1rem solid ${props => props.theme.colors.background};
+
+  > button {
+    width: 300px;
+    height: 50px;
+  }
+`;
